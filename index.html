@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FBLA Into to Programming Project</title>
+    <title>MidNight Monsoon</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Midnight Monsoon</h1>
+    <h1 id="mainTitle">Midnight Monsoon</h1>
     <!--Background Rain Audio-->
     <audio id="rain-audio" src="RainAudio.mp3" autoplay loop muted></audio>
     <!--These are the different buttons that are used to navigate through the main page-->
-    <button id="startButton">Start</button>
-    <button id="settingsButton">Settings</button>
-    <button id="muteButton">Mute/Unmute</button>
+
+
+    <div id="button-container">
+        <button id="startButton" onclick="startStory()">Start</button>
+        <button id="settingsButton">Settings</button>
+        <button id="muteButton">
+            <img src="muteIcon.png" alt="Muted Icon" id="muteIcon">
+        </button>
+    </div>
     <!--This is the link to the script file-->
     <script type="module" src="script.js"></script>
 </body>
