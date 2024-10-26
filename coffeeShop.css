@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); /* Pixel font from Google Fonts */
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-image: url("coffeeShop.jpg"); /* Change this to the coffee shop image */
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#sceneTitle {
+    color: #d437e9; /* Bright color for title */
+    font-family: 'Press Start 2P', cursive; /* Pixel art font */
+    font-size: 3vw; /* Responsive font size */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); /* Glow effect */
+    margin-top: 20px; /* Add some space from the top */
+}
+
+.text-box {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black box */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%; /* Adjust width as needed */
+    color: white; /* Text color */
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+}
+
+#button-container {
+    display: flex;
+    flex-direction: row; /* Align buttons horizontally */
+    gap: 1.5vw; /* Space between buttons */
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center; /* Center buttons vertically */
+    position: relative; /* Allow positioning inside container */
+    margin-top: 30px; /* Space from the content */
+}
+/* Transparent box for buttons */
+#transparentBox {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    padding: 2vw;
+    border-radius: 10px;
+    max-width: 50vw;
+    margin: 2rem auto 0 auto;
+    position: absolute;
+    top: 70vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Buttons in the box */
+#transparentBox button {
+    padding: 1vw 2vw;
+    font-size: 1.2vw;
+    cursor: pointer;
+    background-color: rgba(136, 10, 153, 0.8);
+    border: none;
+    color: white;
+    margin-top: 1vw;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+}
+
+#transparentBox button:hover {
+    transform: scale(1.05);
+    background-color: rgba(136, 10, 153, 1);
+}
+
+button {
+    padding: 0.8vh 1.5vw; /* Padding for buttons */
+    font-size: 1.2vw; /* Font size for buttons */
+    cursor: pointer;
+    background-color: rgba(136, 10, 153, 0.8); /* Slightly transparent background */
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    border-radius: 5px; /* Rounded corners for buttons */
+}
+
+button:hover {
+    transform: scale(1.05); /* Scale up on hover */
+    background-color: rgba(136, 10, 153, 1); /* Change background on hover */
+}
+#animated-text {
+    white-space: pre-wrap; /* Maintain text formatting */
+}
+/* Decision button styling */
+.decision-button {
+    margin-top: 10px;
+    padding: 1vw 2vw;
+    font-size: 1.2vw;
+    cursor: pointer;
+    background-color: rgba(136, 10, 153, 0.8);
+    border: none;
+    color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.decision-button:hover {
+    transform: scale(1.05);
+    background-color: rgba(136, 10, 153, 1);
+}
