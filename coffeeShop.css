@@ -120,3 +120,16 @@ button:hover {
     transform: scale(1.05);
     background-color: rgba(136, 10, 153, 1);
 }
+/* Style for the Decision Point background */
+#decision-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+    color: #ffffff;
+    width: 20%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}

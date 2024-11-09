@@ -8,14 +8,16 @@
 </head>
 <body class="coffee-shop-background">
     <h1 id="sceneTitle">Coffee Shop</h1>
-    <audio id="doorbell-audio" src="ShopDoorBell.mp3" preload="auto"></audio>
+    <audio id="doorbell-audio" src="./Audios/ShopDoorBell.mp3" preload="auto"></audio>
     <div id="scene-content">
         <div class="text-box" id="story-text">
             <p id="animated-text"></p>
         </div>
-        
-        <h2>Decision Point</h2>
-        <p>What will you do?</p>
+        <!--Decision Point Selection-->
+        <div id="decision-container">
+            <h2>Decision Point</h2>
+            <p>What will you do?</p>
+        </div>
     </div>
     <div id="transparentBox">
         <button id="continueButton">Continue Story</button>
