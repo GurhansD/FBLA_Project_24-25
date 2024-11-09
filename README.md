@@ -4,11 +4,14 @@ Midnight Monsoon is an interactive, retro-style pixel story that immerses player
 
 
 ## Program Setup
-1. Node.js: Ensure Node.js is installed on your system. Please install the latest version, which can be downloaded from Node.js official website.
-2. Install Vite. Run the following command in the terminal:
-       npm install vite
-3. Run Development Server. Run the following command in the terminal:
-        npm run dev
+1. **Clone the repository** on your local machine under the desired file location:
+       ```git clone https://github.com/GurhansD/FBLA_Project_24-25.git```
+1. Download the latest version of **Node.js** on your system from [Node.js official website](https://nodejs.org/en).
+2. **Install Vite** using: 
+       ```npm install vite```
+3. **Run the development server** using:
+        ```npm run dev```
+
 This will launch the project in development mode, and you can view it in your web browser. Enjoy :)
 
 ## Credits
