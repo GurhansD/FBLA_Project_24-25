@@ -1,16 +1,17 @@
-export function animateText(elementId, text, speed = 25) {
-    const textElement = document.getElementById(elementId);
+export function animateText(elementId, text, speed, callback) {
+    const element = document.getElementById(elementId);
     let index = 0;
 
-    function typeText() {
+    function type() {
         if (index < text.length) {
-            textElement.innerHTML += text.charAt(index);
+            element.innerHTML += text.charAt(index);
             index++;
-            setTimeout(typeText, speed);  // Speed in milliseconds (default 25ms)
+            setTimeout(type, speed);
+        } else if (callback) {
+            callback(); // Animation complete, invoke callback
         }
     }
 
-    // Clear existing text before starting animation
-    textElement.innerHTML = "";
-    typeText();
+    element.innerHTML = ""; // Clear previous text
+    type();
 }

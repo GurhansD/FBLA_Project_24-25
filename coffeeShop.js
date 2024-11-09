@@ -1,6 +1,7 @@
 import { animateText } from './textAnimation.js';
 
 let continueClick = 0;
+let textAnimating = false; // Flag to control animation state
 
 const storyParts = [
     "The coffee shop is a warm shelter from the storm outside. The sound of rain tapping against the windows mingles with the aroma of freshly brewed coffee.",
@@ -10,29 +11,46 @@ const storyParts = [
     "You glance out the window, spotting a faintly lit subway entrance a block away. Nearby, the neon lights of a small, rundown hotel flicker invitingly. As the wind howls, you weigh your options: brave the subway or find refuge at the hotel."
 ];
 
+// Function to disable and re-enable the Continue button
+function toggleContinueButton(state) {
+    document.getElementById("continueButton").disabled = state;
+}
+
+// Stop button logic
 function stopStory() {
     alert("Thanks for Playing!!!");
     window.location.href = 'index.html';
 }
 
+// Function to display new story text when Continue is clicked
 function continueStory() {
+    if (textAnimating) return; // Prevent further clicks during animation
+
     const animatedTextElement = document.getElementById("animated-text");
-    animatedTextElement.innerHTML = "";
+    animatedTextElement.innerHTML = ""; // Clear previous text
+    textAnimating = true; // Start animation state
+    toggleContinueButton(true); // Disable button
 
     if (continueClick < storyParts.length - 1) {
-        animateText("animated-text", storyParts[continueClick], 25);
+        animateText("animated-text", storyParts[continueClick], 25, () => {
+            textAnimating = false; // Reset animation state
+            toggleContinueButton(false); // Re-enable button
+        });
         continueClick += 1;
     } else {
-        animateText("animated-text", storyParts[continueClick], 25);
+        animateText("animated-text", storyParts[continueClick], 25, () => {
+            textAnimating = false;
+            toggleContinueButton(false);
+            showDecisionButtons();  // Show decision buttons on the last part
+        });
         continueClick += 1;
-        showDecisionButtons();  // Show decision buttons on the last part
     }
 }
 
 function showDecisionButtons() {
-    // Hide the Continue button and show the decision buttons
+        // Hide the Continue button and show the decision buttons
     document.getElementById("continueButton").style.display = 'none';
-
+    
     // Create "Go to Hotel" and "Go to Subway" buttons
     const hotelButton = document.createElement("button");
     hotelButton.innerText = "Go to Hotel";
@@ -56,5 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const doorbellAudio = document.getElementById('doorbell-audio');
     doorbellAudio.play();
-    animateText("animated-text", storyParts[0], 25);
+    animateText("animated-text", storyParts[0], 25, () => {
+        textAnimating = false; // Animation flag reset
+        toggleContinueButton(false); // Ensure button is enabled after first story part
+    });
 });
