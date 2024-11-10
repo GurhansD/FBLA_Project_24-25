@@ -1,25 +1,30 @@
-var count = 0;
-//This function will determine whether or not to mute the background audio by using a counter
-function muteButtonClick() { 
-    count += 1;
-    const audio = document.getElementById('rain-audio');
-    if(count % 2 == 1){
-        audio.muted = false;   // Unmute on odd clicks
-    } else{
-        audio.muted = true;    // Mute on even clicks
+// Automatically play the rain audio and manage mute/unmute icon
+window.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("rain-audio");
+    const muteButton = document.getElementById("muteButton");
+    const muteIcon = document.getElementById("muteIcon");
+
+    // Ensure audio starts playing on page load
+    audio.play();
+    audio.muted = false; // Ensure it starts unmuted
+    muteIcon.src = "muteIcon.png"; // Set initial icon to mute icon
+
+    // Function to toggle mute and update icon
+    function muteButtonClick() { 
+        audio.muted = !audio.muted; // Toggle mute state
+        muteIcon.src = audio.muted ? "unmuteIcon.png" : "muteIcon.png"; // Update icon based on state
     }
-}
 
-//This function will start the story and change the background of the webpage to the
-function startStory(){
-    console.log("start story is clicked");
-    // Redirects to the coffee shop page
+    // Add event listener for mute button
+    muteButton.addEventListener("click", muteButtonClick);
+});
+
+// Function to start the story
+function startStory() {
+    console.log("Start story is clicked");
+    //Redirects user to the coffee shop page to get story started
     window.location.href = 'coffeeShop.html';
-    
 }
 
-//This line of code will run the muteButtonClick function everytime the mute button is clicked
-const muteButton = document.getElementById("muteButton");
-muteButton.addEventListener("click", muteButtonClick);
-
+// Add event listener for the start button
 document.getElementById("startButton").addEventListener("click", startStory);
