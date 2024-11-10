@@ -1,6 +1,6 @@
 import { animateText } from './textAnimation.js';
 
-let continueClick = 0;
+let continueClick = 1;
 let textAnimating = false; // Flag to control animation state
 
 const storyParts = [
@@ -69,13 +69,18 @@ function showDecisionButtons() {
 
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("continueButton").addEventListener("click", continueStory);
+    const continueButton = document.getElementById("continueButton");
+    continueButton.addEventListener("click", continueStory);
     document.getElementById("stopButton").addEventListener("click", stopStory);
 
     const doorbellAudio = document.getElementById('doorbell-audio');
     doorbellAudio.play();
+
+    // Disable the continue button before animation starts
+    toggleContinueButton(true);
+
     animateText("animated-text", storyParts[0], 25, () => {
         textAnimating = false; // Animation flag reset
-        toggleContinueButton(false); // Ensure button is enabled after first story part
+        toggleContinueButton(false); // Enable button after animation completes
     });
 });
