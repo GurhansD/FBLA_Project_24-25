@@ -1,25 +1,47 @@
 // Automatically play the rain audio and manage mute/unmute icon
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("rain-audio");
     const muteButton = document.getElementById("muteButton");
     const muteIcon = document.getElementById("muteIcon");
 
-    // Ensure audio starts playing on page load
-    audio.play();
-    audio.muted = false; // Ensure it starts unmuted
-    muteIcon.src = "muteIcon.png"; // Set initial icon to mute icon
+    // Ensure audio plays immediately with minimal browser restrictions
+    const playAudio = () => {
+        // Remove any existing event listeners to prevent multiple bindings
+        document.removeEventListener('click', playAudio);
 
-    // Function to toggle mute and update icon
+        // Attempt to play audio
+        audio.play().catch(error => {
+            // If autoplay is still blocked, set a very low volume as a workaround
+            audio.volume = 0.1;
+            audio.play();
+        });
+    };
+
+    // Set initial audio properties
+    audio.loop = true;
+    audio.volume = 0.7;
+
+    // Attempt to play immediately
+    playAudio();
+
+    // Add fallback click listener
+    document.addEventListener('click', playAudio);
+
+    // Mute toggle functionality
     function muteButtonClick() { 
-        audio.muted = !audio.muted; // Toggle mute state
-        muteIcon.src = audio.muted ? "unmuteIcon.png" : "muteIcon.png"; // Update icon based on state
+        audio.muted = !audio.muted;
+        muteIcon.src = audio.muted ? "muteIcon.png" : "unmuteIcon.png";
     }
 
-    // Add event listener for mute button
+    // Initial mute icon setup
+    muteIcon.src = "unmuteIcon.png";
+    audio.muted = false;
+
+    // Add mute button listener
     muteButton.addEventListener("click", muteButtonClick);
 });
 
-// Function to start the story
+// Start story function
 function startStory() {
     console.log("Start story is clicked");
     //Redirects user to the coffee shop page to get story started
