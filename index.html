@@ -13,16 +13,19 @@
 
     <!--These are the different buttons that are used to navigate through the main page-->
 
-
+    
     <div id="button-container">
         <button id="startButton">Start</button>
-        <button id="muteButton">
-            <img src="muteIcon.png" alt="Muted Icon" id="muteIcon">
-        </button>
+        <button id="settingsButton">Settings</button>
     </div>
 
     
     <!--This is the link to the script file for the home page-->
     <script type="module" src="script.js"></script>
+    <script>
+        document.getElementById('settingsButton').onclick = () => {
+            window.location.href = 'settings.html';
+        };
+    </script>
 </body>
 </html>

@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-image: url("coffeeShop.jpg"); /* Change this to the coffee shop image */
+    background-image: url("coffeeShop.jpg");
     height: 100vh;
     background-size: cover;
     background-position: center;

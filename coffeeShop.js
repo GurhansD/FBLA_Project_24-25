@@ -31,14 +31,16 @@ function continueStory() {
     textAnimating = true; // Start animation state
     toggleContinueButton(true); // Disable button
 
+    const textSpeed = localStorage.getItem('textSpeed') || 25; // Get text speed from local storage
+
     if (continueClick < storyParts.length - 1) {
-        animateText("animated-text", storyParts[continueClick], 25, () => {
+        animateText("animated-text", storyParts[continueClick], textSpeed, () => {
             textAnimating = false; // Reset animation state
             toggleContinueButton(false); // Re-enable button
         });
         continueClick += 1;
     } else {
-        animateText("animated-text", storyParts[continueClick], 25, () => {
+        animateText("animated-text", storyParts[continueClick], textSpeed, () => {
             textAnimating = false;
             toggleContinueButton(false);
             showDecisionButtons();  // Show decision buttons on the last part
@@ -48,7 +50,7 @@ function continueStory() {
 }
 
 function showDecisionButtons() {
-        // Hide the Continue button and show the decision buttons
+    // Hide the Continue button and show the decision buttons
     document.getElementById("continueButton").style.display = 'none';
     
     // Create "Go to Hotel" and "Go to Subway" buttons
@@ -74,12 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stopButton").addEventListener("click", stopStory);
 
     const doorbellAudio = document.getElementById('doorbell-audio');
+    doorbellAudio.volume = localStorage.getItem('volume') || 0.7; // Set volume from local storage
     doorbellAudio.play();
 
     // Disable the continue button before animation starts
     toggleContinueButton(true);
 
-    animateText("animated-text", storyParts[0], 25, () => {
+    const textSpeed = localStorage.getItem('textSpeed') || 25; // Get text speed from local storage
+    animateText("animated-text", storyParts[0], textSpeed, () => {
         textAnimating = false; // Animation flag reset
         toggleContinueButton(false); // Enable button after animation completes
     });
