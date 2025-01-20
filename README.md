@@ -20,7 +20,6 @@ This will launch the project in development mode, and you can view it in your we
  - Background Images - AI Generated (DALLE Image Generation)
  - Doorbell Audio - https://www.youtube.com/watch?v=8yXqrRwkar8
  - Rain Audio - https://www.youtube.com/watch?v=vw8WxcIoixY
- - Unmute Button - https://www.iconfinder.com/icons/298887/unmute_icon
- - Mute Button - https://img.api.video/1200px_muteicon_svg_96e1c80dee.png
+
 
 **Author**: Gurhans Dhillon
