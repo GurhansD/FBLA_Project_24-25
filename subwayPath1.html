@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subway Entrance - Midnight Monsoon</title>
+    <title>Subway Path - Midnight Monsoon</title>
     <link rel="stylesheet" href="subwayEntrance.css">
     <style>
         body {
-            background: url('subwayEntrance.webp') center center/cover no-repeat;
+            background: url('subwayPath1.webp') center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -20,6 +20,12 @@
             border-radius: 10px;
             color: white;
             text-align: center;
+        }
+        #textBox {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
         button {
             margin: 10px;
@@ -39,19 +45,21 @@
 </head>
 <body>
     <div id="transparentBox">
-        <h1>You are at the Subway station entrance.</h1>
-        <p>It looks abandoned down there, and there is no one in sight. Now you face these choices:</p>
+        <div id="textBox">
+            <h1>The station is eerily empty, save for flickering fluorescent lights and graffiti-covered walls.</h1>
+            <p>A train sits idly on the track, its doors partially open. The rainwater trickles down the walls, creating puddles on the floor.</p>
+        </div>
         <div id="choices">
-            <button onclick="window.location.href='subwayPath1.html'">Enter Subway</button>
-            <button onclick="alert('You chose to return to the coffee shop!')">Return to Coffee Shop</button>
-            <button id="stopButton">Stop Story</button>
+            <button onclick="stopStory()">Stop Story</button>
+            <button onclick="alert('You chose to wait at the subway!')">Wait at Subway</button>
+            <button onclick="alert('You chose to explore the subway!')">Explore Subway</button>
         </div>
     </div>
     <script>
-        document.getElementById("stopButton").addEventListener("click", function() {
+        function stopStory() {
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
-        });
+        }
     </script>
 </body>
 </html>
