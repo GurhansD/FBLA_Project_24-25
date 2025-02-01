@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subway Path - Midnight Monsoon</title>
+    <title>Subway Path 2 - Midnight Monsoon</title>
     <link rel="stylesheet" href="subwayEntrance.css">
     <style>
         body {
-            background: url('subwayPath1.webp') center center/cover no-repeat;
+            background: url('subwayPath2.webp') center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -20,12 +20,6 @@
             border-radius: 10px;
             color: white;
             text-align: center;
-        }
-        #textBox {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
         }
         button {
             margin: 10px;
@@ -45,14 +39,17 @@
 </head>
 <body>
     <div id="transparentBox">
-        <div id="textBox">
-            <h1>The station is eerily empty, save for flickering fluorescent lights and graffiti-covered walls.</h1>
-            <p>A train sits idly on the track, its doors partially open. The rainwater trickles down the walls, creating puddles on the floor.</p>
-        </div>
+        <h1>You move forward, stepping with caution.</h1>
+        <p>The tunnel walls drip with moisture, and the sound of rats echoes. As you go deeper, you see:</p>
+        <ul>
+            <li>A flooded tunnel with a broken train.</li>
+            <li>A strange door marked “Maintenance.”</li>
+        </ul>
+        <p>What will you do?</p>
         <div id="choices">
-            <button onclick="stopStory()">Stop Story</button>
-            <button onclick="alert('You chose to wait at the subway!')">Wait at Subway</button>
-            <button onclick="alert('You chose to explore the subway!'); window.location.href='subwayPath2.html'">Explore Subway</button>
+            <button onclick="alert('You chose to stop the story!'); stopStory()">Stop Story</button>
+            <button onclick="alert('You chose to explore the flooded tunnel!'); window.location.href='losePage.html'">Explore Flooded Tunnel</button>
+            <button onclick="alert('You chose to investigate the maintenance door!')">Investigate Maintenance Door</button>
         </div>
     </div>
     <script>

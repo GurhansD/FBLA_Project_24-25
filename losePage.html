@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over - Midnight Monsoon</title>
+    <style>
+        body {
+            background-color: black;
+            color: darkblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        h1 {
+            font-size: 48px;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            transition: transform 0.3s;
+            animation: pulse 1s infinite;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        @keyframes pulse {
+            0% { background-color: red; }
+            50% { background-color: darkred; }
+            100% { background-color: red; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Unfortunately, you lost</h1>
+    <p>Thank you for playing Midnight Monsoon</p>
+    <div id="choices">
+        <button onclick="alert('Loading recent saved checkpoint...')">Load Recent Saved Checkpoint</button>
+        <button onclick="alert('Restarting story...'); window.location.href='index.html'">Restart Story</button>
+    </div>
+</body>
+</html>

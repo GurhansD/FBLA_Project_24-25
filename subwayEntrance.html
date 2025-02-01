@@ -6,6 +6,24 @@
     <title>Subway Entrance - Midnight Monsoon</title>
     <link rel="stylesheet" href="subwayEntrance.css">
     <style>
+        body.subway-background {
+        background: url('subwayEntrance.webp') center center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        }
+        .end-message {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
         body {
             background: url('subwayEntrance.webp') center center/cover no-repeat;
             display: flex;
@@ -43,7 +61,7 @@
         <p>It looks abandoned down there, and there is no one in sight. Now you face these choices:</p>
         <div id="choices">
             <button onclick="window.location.href='subwayPath1.html'">Enter Subway</button>
-            <button onclick="alert('You chose to return to the coffee shop!')">Return to Coffee Shop</button>
+            <button onclick="alert('You chose to return to the coffee shop!'); window.location.href='losePage.html'">Return to Coffee Shop</button>
             <button id="stopButton">Stop Story</button>
         </div>
     </div>
