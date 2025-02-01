@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Path - Midnight Monsoon</title>
+    <title>Shady Man - Midnight Monsoon</title>
     <link rel="stylesheet" href="hotel.css">
     <style>
         body {
-            background: url('hotelPath1.webp') center center/cover no-repeat;
+            background: url('hotelPathShadyMan.webp') center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -35,27 +35,21 @@
         button:hover {
             background-color: #0056b3;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
     </style>
 </head>
 <body>
     <div id="transparentBox">
-        <h1>Welcome to the Hotel Path</h1>
-        <p>What would you like to do?</p>
+        <h1>In a dark alley, a mysterious figure in a rain-soaked coat stands beneath a flickering streetlight.</h1>
+        <h3>He speaks in a raspy voice...</h3>
+        <p>"The city's drowning. I know a way out, but you gotta trust me."</p>
+        <p>What will you do?</p>
         <div id="choices">
-            <button onclick="alert('You chose to go straight!'); window.location.href='hotelPath3.html'">Go Straight</button>
-            <button onclick="alert('You chose to take a right!'); window.location.href='hotelPathShadyMan.html'">Take a Right</button>
-            <button onclick="alert('You chose to stop the story!'); stopStory()">Stop Story</button>
+            <button onclick="window.location.href='hotelPath1.html'">Go Back</button>
+            <button onclick="alert('You chose to trust the shady man!')">Trust the Shady Man</button>
         </div>
     </div>
     <script>
-        function stopStory() {
-            alert("Thanks for Playing!!!");
-            window.location.href = 'index.html';
-        }
+        // Add any additional JavaScript logic later if needed
     </script>
 </body>
 </html>
