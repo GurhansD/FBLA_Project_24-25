@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Path 3 - Midnight Monsoon</title>
+    <title>Hotel Path 3 Right Bridge - Midnight Monsoon</title>
     <link rel="stylesheet" href="hotel.css">
     <style>
         body {
-            background: url('hotelPath3.webp') center center/cover no-repeat;
+            background: url('hotelPath3RightBridge.webp') center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -39,14 +39,14 @@
 </head>
 <body>
     <div id="transparentBox">
-        <h1>You venture further into the storm, seeking shelter...</h1>
-        <p>As you push through the rain, you spot a dimly lit shop ahead. The flickering sign above the door beckons you closer. Inside, the air is warm, and the smell of coffee fills your senses. You feel a sense of safety, but the storm rages on outside.</p>
+        <h1>You take the stairs up, avoiding the flooding below.</h1>
+        <p>The old bridge sways as you cross, but through the rain, you see the hotel in the distance.</p>
         <p>What will you do?</p>
         <div id="choices">
-            <button onclick="alert('You chose to go left!')">Go Left</button>
-            <button onclick="alert('You chose to go up the stairs!'); window.location.href='hotelPath3RightBridge.html'">Go Up the Stairs to the Right</button>
-            <button onclick="alert('You searched the shop!'); window.location.href='hotelpathAbandonedShop.html'">Search the Shop</button>
-            <button id="stopButton">Stop Story</button>
+            <button onclick="stopStory()">Stop Story</button>
+            <button onclick="window.location.href='losePage.html?source=subwayPath1'">Turn Back</button>
+            <button onclick="window.location.href='losePage.html?source=subwayPath2'">Inspect the Bridge</button>
+            <button onclick="window.location.href='hotelEntrance.html'">Cross the Bridge</button>
         </div>
     </div>
     <button onclick="toggleInventory()">Inventory</button>
@@ -57,10 +57,10 @@
     </div>
     <script src="inventory.js"></script>
     <script>
-        document.getElementById("stopButton").addEventListener("click", function() {
+        function stopStory() {
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
-        });
+        }
     </script>
 </body>
 </html>
