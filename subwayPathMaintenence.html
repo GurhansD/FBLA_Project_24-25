@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Room - Midnight Monsoon</title>
+    <link rel="stylesheet" href="subwayEntrance.css">
+    <style>
+        body {
+            background: url('subwayPathMaintenence.webp') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+            position: relative;
+            z-index: 2;
+            pointer-events: auto;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="transparentBox">
+        <h1 id="sceneTitle">Maintenance Room</h1>
+        <div class="text-box" id="story-text">
+            <p id="animated-text"></p>
+        </div>
+        <div id="choices">
+
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href = 'index.html';">Stop Story</button>
+            <button onclick="alert('You chose to follow the maintenance tunnels!');">Follow the Maintenance Tunnels</button>
+            <button onclick="addItemToInventory('Flashlight (weak batteries)'); alert('You found a flashlight with weak batteries!');">Search the Room</button>
+            <button onclick="alert('You chose to wait in the maintenance room.');">Wait in the Maintenance Room</button>
+
+        </div>
+    </div>
+    <button onclick="toggleInventory()">Inventory</button>
+    <div id="inventoryBox" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.8); padding: 20px; border-radius: 10px; color: white; z-index: 1000;">
+        <h2>Inventory</h2>
+        <ul id="inventoryList"></ul>
+        <button onclick="toggleInventory()">Close</button>
+    </div>
+    <script src="inventory.js"></script>
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25; // Get speed directly from settings
+        const storyText = "The maintenance room is dimly lit and filled with tools and equipment. What will you do?";
+        
+        // Get all buttons except inventory
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            // Enable buttons after animation completes
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable story buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
+
+
+
+
+
+
+    </script>
+</body>
