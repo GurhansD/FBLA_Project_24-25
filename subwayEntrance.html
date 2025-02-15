@@ -6,24 +6,6 @@
     <title>Subway Entrance - Midnight Monsoon</title>
     <link rel="stylesheet" href="subwayEntrance.css">
     <style>
-        body.subway-background {
-        background: url('subwayEntrance.webp') center center/cover no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        color: #ffffff;
-        font-family: Arial, sans-serif;
-        }
-        .end-message {
-        text-align: center;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 20px;
-        border-radius: 10px;
-        max-width: 600px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
         body {
             background: url('subwayEntrance.webp') center center/cover no-repeat;
             display: flex;
@@ -57,12 +39,15 @@
 </head>
 <body>
     <div id="transparentBox">
-        <h1>You are at the Subway station entrance.</h1>
-        <p>It looks abandoned down there, and there is no one in sight. Now you face these choices:</p>
+        <h1 id="sceneTitle">Subway Entrance</h1>
+        <div class="text-box" id="story-text">
+            <p id="animated-text"></p>
+        </div>
         <div id="choices">
             <button onclick="window.location.href='subwayPath1.html'">Enter Subway</button>
+            <button onclick="alert('Loading recent saved checkpoint...')">Load Recent Saved Checkpoint</button>
             <button onclick="alert('You chose to return to the coffee shop!'); window.location.href='losePage.html'">Return to Coffee Shop</button>
-            <button id="stopButton">Stop Story</button>
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
         </div>
     </div>
     <button onclick="toggleInventory()">Inventory</button>
@@ -72,11 +57,19 @@
         <button onclick="toggleInventory()">Close</button>
     </div>
     <script src="inventory.js"></script>
-    <script>
-        document.getElementById("stopButton").addEventListener("click", function() {
-            alert("Thanks for Playing!!!");
-            window.location.href = 'index.html';
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "You are at the Subway station entrance. It looks abandoned down there, and there is no one in sight. Now you face these choices:";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
         });
+        
+        storyButtons.forEach(button => button.disabled = true);
     </script>
 </body>
 </html>

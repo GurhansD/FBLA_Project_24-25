@@ -39,18 +39,14 @@
 </head>
 <body>
     <div id="transparentBox">
-        <h1>You move forward, stepping with caution.</h1>
-        <p>The tunnel walls drip with moisture, and the sound of rats echoes. As you go deeper, you see:</p>
-        <ul>
-            <li>A flooded tunnel with a broken train.</li>
-            <li>A strange door marked “Maintenance.”</li>
-        </ul>
-        <p>What will you do?</p>
+        <h1 id="sceneTitle">Subway Path 2</h1>
+        <div class="text-box" id="story-text">
+            <p id="animated-text"></p>
+        </div>
         <div id="choices">
-            <button onclick="alert('You chose to stop the story!'); stopStory()">Stop Story</button>
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href = 'index.html';">Stop Story</button>
             <button onclick="alert('You waded deeper into the abandoned subway, hoping to find a dry path forward. But as the water rose swiftly, your escape route vanished. The tunnel became a watery grave, and the last thing you saw was the dim flicker of the emergency lights fading into darkness.'); window.location.href='losePage.html'">Explore Flooded Tunnel</button>
             <button onclick="window.location.href='subwayPathMaintenence.html'">Investigate Maintenance Door</button>
-
         </div>
     </div>
     <button onclick="toggleInventory()">Inventory</button>
@@ -60,11 +56,22 @@
         <button onclick="toggleInventory()">Close</button>
     </div>
     <script src="inventory.js"></script>
-    <script>
-        function stopStory() {
-            alert("Thanks for Playing!!!");
-            window.location.href = 'index.html';
-        }
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "You move forward, stepping with caution. The tunnel walls drip with moisture, and the sound of rats echoes. As you go deeper, you see: A flooded tunnel with a broken train. A strange door marked 'Maintenance'. What will you do?";
+        
+        // Get all buttons except inventory
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            // Enable buttons after animation completes
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable story buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
     </script>
 </body>
 </html>
