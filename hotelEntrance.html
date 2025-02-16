@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Path 3 Right Bridge - Midnight Monsoon</title>
-    <link rel="stylesheet" href="hotel.css">
+    <title>Hotel Entrance - Midnight Monsoon</title>
+    <link rel="stylesheet" href="subwayEntrance.css">
     <style>
         body {
-            background: url('hotelPath3RightBridge.webp') center center/cover no-repeat;
+            background: url('hotelEntrance.webp') center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -39,14 +39,12 @@
 </head>
 <body>
     <div id="transparentBox">
-        <h1>You take the stairs up, avoiding the flooding below.</h1>
-        <p>The old bridge sways as you cross, but through the rain, you see the hotel in the distance.</p>
-        <p>What will you do?</p>
+        <h1>Hotel Entrance</h1>
+        <p>You've reached the hotel entrance. The storm rages behind you. What will you do?</p>
         <div id="choices">
-            <button onclick="stopStory()">Stop Story</button>
-            <button onclick="alert('Turning back seemed like the safest option, but the flood had already claimed the lower streets. With nowhere left to run, the storm swallowed you whole.'); window.location.href='losePage.html?source=subwayPath1'">Turn Back</button>
-            <button onclick="alert('As you inspected the bridge, the storm had other plans. The structure collapsed beneath you, and the rushing floodwaters consumed you in an instant.'); window.location.href='losePage.html?source=subwayPath2'">Inspect the Bridge</button>
-            <button onclick="window.location.href='hotelEntrance.html'">Cross the Bridge</button>
+            <button onclick="window.location.href='hotel.html'">Enter the Hotel</button>
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
+            <button onclick="alert('As you wander into the storm, the winds howl louder, and the rain blinds your vision. Before you realize it, floodwaters surge around you, pulling you under. The city swallows another lost soul.'); window.location.href='losePage.html'">Look for Another Way</button>
         </div>
     </div>
     <button onclick="toggleInventory()">Inventory</button>
@@ -56,11 +54,5 @@
         <button onclick="toggleInventory()">Close</button>
     </div>
     <script src="inventory.js"></script>
-    <script>
-        function stopStory() {
-            alert("Thanks for Playing!!!");
-            window.location.href = 'index.html';
-        }
-    </script>
 </body>
 </html>
