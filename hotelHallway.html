@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Entrance - Midnight Monsoon</title>
+    <title>Hotel Hallway - Midnight Monsoon</title>
     <link rel="stylesheet" href="subwayEntrance.css">
     <style>
         body {
-            background: url('hotelEntrance.webp') center center/cover no-repeat;
+            background: url('hotelHallway.webp') center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -35,16 +35,19 @@
         button:hover {
             background-color: #0056b3;
         }
+        h2 {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div id="transparentBox">
-        <h1>Hotel Entrance</h1>
-        <p>You've reached the hotel entrance. The storm rages behind you. What will you do?</p>
+        <h1>Final Choice: How Do You Escape?</h1>
+        <p>The inside is partially flooded, with dark hallways and broken furniture floating in murky water. The upper floors are still dry, but the storm has knocked out power.</p>
         <div id="choices">
-            <button onclick="window.location.href='hotelHallway.html'">Enter the Hotel</button>
+            <button onclick="window.location.href='losePage.html'">Search for a Rooftop Exit</button>
             <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
-            <button onclick="alert('As you wander into the storm, the winds howl louder, and the rain blinds your vision. Before you realize it, floodwaters surge around you, pulling you under. The city swallows another lost soul.'); window.location.href='losePage.html'">Look for Another Way</button>
+            <button onclick="alert('You push the last piece of furniture against the door, sealing yourself inside. The storm rages on, and for a moment, you feel safe. But as the floodwaters rise, the power cuts out, and the walls tremble. Trapped with no way out, the hotel becomes your tomb.'); window.location.href='losePage.html'">Barricade Yourself in a Room and Wait Out the Storm</button>
         </div>
     </div>
     <button onclick="toggleInventory()">Inventory</button>
