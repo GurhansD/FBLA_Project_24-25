@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survivor Point - Midnight Monsoon</title>
+    <link rel="stylesheet" href="subwayEntrance.css">
+    <style>
+        @keyframes subtleMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('subwaySurvivorPoint.webp') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Press Start 2P', cursive;
+            animation: subtleMove 60s infinite alternate;
+        }
+
+        #survivorBox {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            border: 2px solid #666;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+
+        button {
+            margin: 15px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #444;
+            color: white;
+            transition: all 0.3s;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        button:hover {
+            background-color: #666;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="survivorBox">
+        <h2>Survivor Point</h2>
+        <p>Congratulations! You've made it to safety. Your quick thinking and resourcefulness have saved you from the storm.</p>
+        <button onclick="window.location.href='victoryPage.html'">Continue</button>
+    </div>
+    <script src="inventory.js"></script>
+    <script src="saveSystem.js"></script>
+</body>
+</html>

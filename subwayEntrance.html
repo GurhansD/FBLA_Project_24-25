@@ -45,7 +45,6 @@
         </div>
         <div id="choices">
             <button onclick="window.location.href='subwayPath1.html'">Enter Subway</button>
-            <button onclick="alert('Loading recent saved checkpoint...')">Load Recent Saved Checkpoint</button>
             <button onclick="alert('You chose to return to the coffee shop!'); window.location.href='losePage.html'">Return to Coffee Shop</button>
             <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
         </div>
@@ -71,5 +70,6 @@
         
         storyButtons.forEach(button => button.disabled = true);
     </script>
+    <script src="saveSystem.js"></script>
 </body>
 </html>

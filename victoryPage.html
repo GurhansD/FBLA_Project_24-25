@@ -17,8 +17,13 @@
             50% { opacity: 0.5; }
         }
 
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hotelRooftop.webp') center center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), var(--bg-image) center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -61,11 +66,6 @@
             animation: fall 5s linear infinite;
         }
 
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(360deg); }
-        }
-
         button {
             margin: 20px;
             padding: 15px 30px;
@@ -101,18 +101,19 @@
     <div id="victoryBox">
         <h1>VICTORY!</h1>
         <p>Against all odds, you've survived the Midnight Monsoon!</p>
-        <p>Your quick thinking and bravery led you to safety as the helicopter spotted your signals. The storm may have been relentless, but your determination was stronger.</p>
+        <p>Your quick thinking and bravery led you to safety. The storm may have been relentless, but your determination was stronger.</p>
         <p>This harrowing journey through the stormy night has tested your courage and resilience. You've proven that even in the darkest of times, hope can prevail.</p>
         <p>Thank you for playing Midnight Monsoon - your story will be remembered!</p>
         <button onclick="window.location.href='index.html'">Play Again</button>
     </div>
-    <script src="textAnimation.js"></script>
     <script>
-        // Add text animation to victory message
-        const victoryText = document.querySelectorAll('#victoryBox p');
-        victoryText.forEach((p, index) => {
-            animateText(p.id || `victoryText${index}`, p.textContent, 50);
-        });
+        // Set background based on path taken
+        const lastPath = localStorage.getItem('lastPath') || 'hotel';
+        document.body.style.setProperty('--bg-image', 
+            lastPath === 'subway' ? "url('subwaySurvivorPoint.webp')" : "url('hotelRooftop.webp')"
+        );
     </script>
+    <script src="textAnimation.js"></script>
+    <script src="saveSystem.js"></script>
 </body>
 </html>

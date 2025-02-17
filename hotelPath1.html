@@ -39,6 +39,12 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        #inventoryToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +64,7 @@
         <button onclick="toggleInventory()">Close</button>
     </div>
     <script src="inventory.js"></script>
+    <script src="saveSystem.js"></script>
     <script>
         function stopStory() {
             alert("Thanks for Playing!!!");

@@ -35,6 +35,12 @@
         button:hover {
             background-color: #0056b3;
         }
+        #inventoryToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +60,7 @@
         <ul id="inventoryList"></ul>
         <button onclick="toggleInventory()">Close</button>
     </div>
+    <script src="saveSystem.js"></script>
     <script src="inventory.js"></script>
     <script>
         // Add any additional JavaScript logic later if needed

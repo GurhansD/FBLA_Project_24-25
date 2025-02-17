@@ -27,6 +27,12 @@
             window.location.href = 'settings.html';
         };
     </script>
+    <script>
+        // Reset inventory when starting page is loaded
+        localStorage.setItem('inventory', JSON.stringify([]));
+    </script>
+    <script src="script.js"></script>
+    <script src="inventory.js"></script>
     <script src="saveSystem.js"></script>
 </body>
 </html>

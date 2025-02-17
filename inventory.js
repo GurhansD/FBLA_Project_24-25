@@ -1,4 +1,5 @@
-let inventory = [];
+// Initialize inventory from localStorage or create empty array
+let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
 
 function toggleInventory() {
     const inventoryBox = document.getElementById('inventoryBox');
@@ -25,6 +26,13 @@ function updateInventoryDisplay() {
 }
 
 function addItemToInventory(item) {
-    inventory.push(item);
-    updateInventoryDisplay();
+    if (!inventory.includes(item)) {
+        inventory.push(item);
+        // Save updated inventory to localStorage
+        localStorage.setItem('inventory', JSON.stringify(inventory));
+        updateInventoryDisplay();
+    }
 }
+
+// Load inventory when the script is loaded
+updateInventoryDisplay();
