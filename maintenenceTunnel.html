@@ -71,7 +71,7 @@
     <script>
         function checkFlashlight() {
             const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
-            if (inventory.includes('flashlight')) {
+            if (inventory.includes('Flashlight (weak batteries)')) {
                 window.location.href = 'subwaySurvivorPoint.html';
             } else {
                 alert('Without a flashlight, you stumble in the darkness and fall to your death.');

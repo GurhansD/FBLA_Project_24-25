@@ -51,12 +51,10 @@
             <p id="animated-text"></p>
         </div>
         <div id="choices">
-
             <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href = 'index.html';">Stop Story</button>
             <button onclick="alert('You chose to follow the maintenance tunnels!'); window.location.href = 'maintenenceTunnel.html'">Follow the Maintenance Tunnels</button>
-            <button onclick="addItemToInventory('Flashlight (weak batteries)'); alert('You found a flashlight with weak batteries!');">Search the Room</button>
-            <button onclick="alert('You chose to wait in the maintenance room.');">Wait in the Maintenance Room</button>
-
+            <button onclick="searchRoom()">Search the Room</button>
+            <button onclick="alert('The silence stretched on, broken only by distant echoes. No rescue came. The storm consumed the city, and you were forgotten in the dark.'); window.location.href = 'losePage.html'">Wait in the Maintenance Room</button>
         </div>
     </div>
     <button onclick="toggleInventory()">Inventory</button>
@@ -66,28 +64,31 @@
         <button onclick="toggleInventory()">Close</button>
     </div>
     <script src="inventory.js"></script>
+    <script>
+        function searchRoom() {
+            const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+            if (inventory.includes('Flashlight (weak batteries)')) {
+                alert('You search the room but find nothing new.');
+            } else {
+                addItemToInventory('Flashlight (weak batteries)');
+                alert('You found a flashlight with weak batteries!');
+            }
+        }
+    </script>
     <script type="module">
         import { animateText } from './textAnimation.js';
         
-        const userSpeed = localStorage.getItem('textSpeed') || 25; // Get speed directly from settings
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
         const storyText = "The maintenance room is dimly lit and filled with tools and equipment. What will you do?";
         
-        // Get all buttons except inventory
         const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
         
         animateText('animated-text', storyText, userSpeed, () => {
-            // Enable buttons after animation completes
             storyButtons.forEach(button => button.disabled = false);
         });
         
-        // Disable story buttons during animation
         storyButtons.forEach(button => button.disabled = true);
-
-
-
-
-
-
     </script>
     <script src="saveSystem.js"></script>
 </body>
+</html>
