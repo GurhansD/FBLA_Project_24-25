@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory! - Midnight Monsoon</title>
+    <link rel="stylesheet" href="subwayEntrance.css">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hotelRooftop.webp') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        #victoryBox {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px #00ff00;
+            animation: blink 1s infinite;
+        }
+
+        h1 {
+            color: #00ff00;
+            font-size: 3rem;
+            text-shadow: 0 0 10px #00ff00;
+            animation: float 3s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff0;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        button {
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #00ff00;
+            color: black;
+            transition: all 0.3s;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        button:hover {
+            background-color: #00cc00;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti effect -->
+    <div class="confetti" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="confetti" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="confetti" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="confetti" style="left: 40%; animation-delay: 3s;"></div>
+    <div class="confetti" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="confetti" style="left: 60%; animation-delay: 0.5s;"></div>
+    <div class="confetti" style="left: 70%; animation-delay: 1.5s;"></div>
+    <div class="confetti" style="left: 80%; animation-delay: 2.5s;"></div>
+    <div class="confetti" style="left: 90%; animation-delay: 3.5s;"></div>
+
+    <div id="victoryBox">
+        <h1>VICTORY!</h1>
+        <p>Against all odds, you've survived the Midnight Monsoon!</p>
+        <p>Your quick thinking and bravery led you to safety as the helicopter spotted your signals. The storm may have been relentless, but your determination was stronger.</p>
+        <p>This harrowing journey through the stormy night has tested your courage and resilience. You've proven that even in the darkest of times, hope can prevail.</p>
+        <p>Thank you for playing Midnight Monsoon - your story will be remembered!</p>
+        <button onclick="window.location.href='index.html'">Play Again</button>
+    </div>
+    <script src="textAnimation.js"></script>
+    <script>
+        // Add text animation to victory message
+        const victoryText = document.querySelectorAll('#victoryBox p');
+        victoryText.forEach((p, index) => {
+            animateText(p.id || `victoryText${index}`, p.textContent, 50);
+        });
+    </script>
+</body>
+</html>
