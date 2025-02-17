@@ -49,7 +49,7 @@
         <p>The abandoned shop is dimly lit, and the air is thick with dust. Rain is dripping through cracks in the ceiling.</p>
         <p>What will you do?</p>
         <div id="choices">
-            <button onclick="addJumpShoes();  window.location.href='hotelPath3RightBridge.html'">Search for Supplies</button>
+            <button onclick="addJumpShoes()">Search for Supplies</button>
             <button onclick="alert('The shop provided temporary refuge, but you underestimated the storm’s power. The flood overtook the building, leaving no way out.'); window.location.href='losePage.html'">Rest Here for a While</button>
             <button onclick="alert('Some doors are best left unopened. The darkness claimed you before you could escape.'); window.location.href='losePage.html'">Investigate the Back Room</button>
             <button onclick="alert('You chose to leave immediately! You ended up following the path to the bridge ahead of you, leading to the hotel.'); window.location.href='hotelPath3RightBridge'">Leave Immediately</button>
@@ -64,24 +64,36 @@
     <script>
         function addJumpShoes() {
             const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
-            if (!inventory.includes('jump shoes')) {
-                inventory.push('jump shoes');
+            if (!inventory.includes('Jump Shoes')) {
+                inventory.push('Jump Shoes');
                 localStorage.setItem('inventory', JSON.stringify(inventory));
-                alert('You found a pair of jump shoes! They might come in handy.');
+                alert('You found a pair of Jump Shoes! They might come in handy.');
+                // Force update inventory display even if not visible
+                updateInventoryDisplay();
+                // If inventory box is visible, refresh it
+                if (document.getElementById('inventoryBox').style.display === 'block') {
+                    toggleInventory();
+                    toggleInventory();
+                }
             } else {
                 alert('You search the shop but find nothing new.');
             }
-            window.location.href = 'hotelPath3.html';
+        }
+
+        function updateInventoryDisplay() {
+            const inventoryList = document.getElementById('inventoryList');
+            const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+            inventoryList.innerHTML = inventory.map(item => `<li>${item}</li>`).join('');
         }
 
         function toggleInventory() {
             const inventoryBox = document.getElementById('inventoryBox');
-            const inventoryList = document.getElementById('inventoryList');
-            const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
-            
-            inventoryList.innerHTML = inventory.map(item => `<li>${item}</li>`).join('');
+            updateInventoryDisplay();
             inventoryBox.style.display = inventoryBox.style.display === 'none' ? 'block' : 'none';
         }
+
+        // Initialize inventory display on page load
+        updateInventoryDisplay();
     </script>
     <script src="inventory.js"></script>
     <script src="saveSystem.js"></script>
