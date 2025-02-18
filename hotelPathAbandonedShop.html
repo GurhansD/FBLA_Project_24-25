@@ -56,11 +56,6 @@
             <button onclick="stopStory()">Stop Story</button>
         </div>
     </div>
-    <button onclick="toggleInventory()">Inventory</button>
-    <div id="inventoryBox" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; color: white;">
-        <h3>Inventory</h3>
-        <ul id="inventoryList"></ul>
-    </div>
     <script>
         function addJumpShoes() {
             const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
@@ -68,9 +63,8 @@
                 inventory.push('Jump Shoes');
                 localStorage.setItem('inventory', JSON.stringify(inventory));
                 alert('You found a pair of Jump Shoes! They might come in handy.');
-                // Force update inventory display even if not visible
                 updateInventoryDisplay();
-                // If inventory box is visible, refresh it
+                // Force inventory box to update if visible
                 if (document.getElementById('inventoryBox').style.display === 'block') {
                     toggleInventory();
                     toggleInventory();
@@ -83,7 +77,14 @@
         function updateInventoryDisplay() {
             const inventoryList = document.getElementById('inventoryList');
             const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
-            inventoryList.innerHTML = inventory.map(item => `<li>${item}</li>`).join('');
+            inventoryList.innerHTML = inventory.map(item => {
+                if (item === 'Jump Shoes') {
+                    return `<li><img src="pixelShoe.png" alt="Jump Shoes" style="width:32px;height:32px;margin-right:10px;">Jump Shoes</li>`;
+                } else if (item === 'Flashlight (weak batteries)') {
+                    return `<li><img src="pixelFlashlight.jpg" alt="Flashlight" style="width:32px;height:32px;margin-right:10px;">Flashlight</li>`;
+                }
+                return `<li>${item}</li>`;
+            }).join('');
         }
 
         function toggleInventory() {
@@ -92,16 +93,15 @@
             inventoryBox.style.display = inventoryBox.style.display === 'none' ? 'block' : 'none';
         }
 
-        // Initialize inventory display on page load
-        updateInventoryDisplay();
-    </script>
-    <script src="inventory.js"></script>
-    <script src="saveSystem.js"></script>
-    <script>
         function stopStory() {
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
         }
+
+        // Initialize inventory display
+        updateInventoryDisplay();
     </script>
+    <script src="inventory.js"></script>
+    <script src="saveSystem.js"></script>
 </body>
 </html>

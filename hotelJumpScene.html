@@ -18,7 +18,7 @@
         #jumpMeter {
             width: 80%;
             max-width: 600px;
-            background: #333;
+            background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
@@ -79,7 +79,8 @@
     </div>
 
     <script>
-        // Get inventory
+        // Check if coming from shady man path
+        const fromShadyMan = document.referrer.includes('hotelPathShadyMan.html');
         const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
         const hasJumpShoes = inventory.includes('Jump Shoes');
 
@@ -89,36 +90,33 @@
         let pointerPosition = 0;
         let direction = 1;
         let isRunning = true;
+        let speed = 0.5; // Normal speed
+        let greenZone = [30, 70]; // Normal green zone
 
-        // Adjust green zone based on jump shoes
-        if (hasJumpShoes) {
-            meterBar.style.background = `
-                linear-gradient(
-                    to right,
-                    red 0%,
-                    red 20%,
-                    green 20%,
-                    green 80%,
-                    red 80%,
-                    red 100%
-                )`;
-        } else {
-            meterBar.style.background = `
-                linear-gradient(
-                    to right,
-                    red 0%,
-                    red 30%,
-                    green 30%,
-                    green 70%,
-                    red 70%,
-                    red 100%
-                )`;
+        // Adjust difficulty based on path and jump shoes
+        if (fromShadyMan) {
+            speed = 0.5; // Same Speed
+            greenZone = [47, 53]; // Smaller green zone
+        } else if (hasJumpShoes) {
+            greenZone = [20, 80]; // Larger green zone with shoes
         }
+
+        // Update meter bar gradient
+        meterBar.style.background = `
+            linear-gradient(
+                to right,
+                red 0%,
+                red ${greenZone[0]}%,
+                green ${greenZone[0]}%,
+                green ${greenZone[1]}%,
+                red ${greenZone[1]}%,
+                red 100%
+            )`;
 
         function movePointer() {
             if (!isRunning) return;
 
-            pointerPosition += direction;
+            pointerPosition += direction * speed;
             if (pointerPosition >= 100 || pointerPosition <= 0) {
                 direction *= -1;
             }
@@ -128,7 +126,6 @@
 
         function stopJump() {
             isRunning = false;
-            const greenZone = hasJumpShoes ? [20, 80] : [30, 70];
             
             if (pointerPosition >= greenZone[0] && pointerPosition <= greenZone[1]) {
                 alert('Perfect jump! You made it to the neighboring building!');

@@ -51,19 +51,22 @@
         <p>What will you do?</p>
         <div id="choices">
             <button onclick="window.location.href='hotelPath1.html'">Go Back</button>
-            <button onclick="alert('You chose to trust the shady man!')">Trust the Shady Man</button>
+            <button onclick="trustShadyMan()">Trust the Shady Man</button>
+            <button onclick="stopStory()">Stop Story</button>
         </div>
-    </div>
-    <button onclick="toggleInventory()">Inventory</button>
-    <div id="inventoryBox" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.8); padding: 20px; border-radius: 10px; color: white; z-index: 1000;">
-        <h2>Inventory</h2>
-        <ul id="inventoryList"></ul>
-        <button onclick="toggleInventory()">Close</button>
     </div>
     <script src="saveSystem.js"></script>
     <script src="inventory.js"></script>
     <script>
-        // Add any additional JavaScript logic later if needed
+        function trustShadyMan() {
+            alert('The man knew the city like the back of his hand and he took you up until here before vanishing like he was never there. This will now serve as your final challenge.');
+            window.location.href = 'hotelJumpScene.html';
+        }
+
+        function stopStory() {
+            alert("Thanks for Playing!!!");
+            window.location.href = 'index.html';
+        }
     </script>
 </body>
 </html>
