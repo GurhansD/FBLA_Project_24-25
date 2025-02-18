@@ -46,8 +46,8 @@
 <body>
     <div id="transparentBox">
         <div id="textBox">
-            <h1>The station is eerily empty, save for flickering fluorescent lights and graffiti-covered walls.</h1>
-            <p>A train sits idly on the track, its doors partially open. The rainwater trickles down the walls, creating puddles on the floor.</p>
+            <h1>The station is eerily empty, and you face a decision...</h1>
+            <p id="animated-text"></p>
         </div>
         <div id="choices">
             <button onclick="stopStory()">Stop Story</button>
@@ -61,6 +61,20 @@
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
         }
+    </script>
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "A train sits idly on the track, its doors partially open. The rainwater trickles down the walls, creating puddles on the floor. Flickering fluorescent lights and graffiti-covered walls cover your surroundings.";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        storyButtons.forEach(button => button.disabled = true);
     </script>
     <script src="saveSystem.js"></script>
 </body>
