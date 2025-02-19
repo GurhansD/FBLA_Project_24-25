@@ -49,7 +49,7 @@
         <p>The abandoned shop is dimly lit, and the air is thick with dust. Rain is dripping through cracks in the ceiling.</p>
         <p>What will you do?</p>
         <div id="choices">
-            <button onclick="addJumpShoes()">Search for Supplies</button>
+            <button onclick="addJumpShoes(); window.location.href='hotelPath3RightBridge.html'">Search for Supplies</button>
             <button onclick="alert('The shop provided temporary refuge, but you underestimated the storm’s power. The flood overtook the building, leaving no way out.'); window.location.href='losePage.html'">Rest Here for a While</button>
             <button onclick="alert('Some doors are best left unopened. The darkness claimed you before you could escape.'); window.location.href='losePage.html'">Investigate the Back Room</button>
             <button onclick="alert('You chose to leave immediately! You ended up following the path to the bridge ahead of you, leading to the hotel.'); window.location.href='hotelPath3RightBridge'">Leave Immediately</button>
@@ -62,7 +62,7 @@
             if (!inventory.includes('Jump Shoes')) {
                 inventory.push('Jump Shoes');
                 localStorage.setItem('inventory', JSON.stringify(inventory));
-                alert('You found a pair of Jump Shoes! They might come in handy.');
+                alert('You found a pair of Jump Shoes! They might come in handy. After finding these, you are on your way to the bridge before the hotel.');
                 updateInventoryDisplay();
                 // Force inventory box to update if visible
                 if (document.getElementById('inventoryBox').style.display === 'block') {
@@ -101,6 +101,7 @@
         // Initialize inventory display
         updateInventoryDisplay();
     </script>
+
     <script src="inventory.js"></script>
     <script src="saveSystem.js"></script>
 </body>

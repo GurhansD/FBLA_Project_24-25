@@ -1,5 +1,5 @@
 body.hotel-background {
-    background: url('hotel.webp') center center/cover no-repeat;
+    background: url('coffeeShopAbandoned.webp') center center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,6 +16,41 @@ body.hotel-background {
     border-radius: 10px;
     max-width: 600px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+#inventoryToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+body {
+    background: url('hotelEntrance.webp') center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+#transparentBox {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #0056b3;
 }
 #inventoryToggle {
     position: fixed;

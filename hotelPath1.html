@@ -50,7 +50,7 @@
 <body>
     <div id="transparentBox">
         <h1>Welcome to the Hotel Path</h1>
-        <p>What would you like to do?</p>
+        <p id="animated-text"></p>
         <div id="choices">
             <button onclick="alert('You chose to go straight!'); window.location.href='hotelPath3.html'">Go Straight</button>
             <button onclick="alert('You chose to take a right!'); window.location.href='hotelPathShadyMan.html'">Take a Right</button>
@@ -64,6 +64,20 @@
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
         }
+    </script>
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "What would you like to do?";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        storyButtons.forEach(button => button.disabled = true);
     </script>
 </body>
 </html>

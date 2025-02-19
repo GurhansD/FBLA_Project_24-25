@@ -43,3 +43,5 @@ function startStory() {
 
 // Add event listener for the start button
 document.getElementById("startButton").addEventListener("click", startStory);
+
+

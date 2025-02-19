@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victory! - Midnight Monsoon</title>
     <link rel="stylesheet" href="subwayEntrance.css">
+    <script src="pathToVictory.js"></script>
     <style>
         @keyframes float {
             0% { transform: translateY(0); }
@@ -23,14 +24,16 @@
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), var(--bg-image) center center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hotelRooftop.webp') center center/cover no-repeat;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
             overflow: hidden;
             font-family: 'Press Start 2P', cursive;
+            color:white
         }
 
         #victoryBox {
@@ -39,9 +42,21 @@
             border-radius: 10px;
             color: white;
             text-align: center;
+            margin-bottom: 20px;
             border: 2px solid #00ff00;
             box-shadow: 0 0 20px #00ff00;
             animation: blink 1s infinite;
+        }
+
+        #reportBox {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px #00ff00;
         }
 
         h1 {
@@ -52,10 +67,28 @@
             margin-bottom: 20px;
         }
 
+        h2 {
+            color: #00ff00;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px #00ff00;
+            animation: blink 1s infinite;
+        }
+
         p {
             font-size: 1.2rem;
             line-height: 1.5;
             margin: 20px 0;
+        }
+        
+        #scoreDisplay {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        #deathCount {
+            color: #ff4444;
+            font-weight: bold;
         }
 
         .confetti {
@@ -106,12 +139,25 @@
         <p>Thank you for playing Midnight Monsoon - your story will be remembered!</p>
         <button onclick="window.location.href='index.html'">Play Again</button>
     </div>
+
+    <div id="reportBox">
+        <h2>Your Journey Report</h2>
+        <p>Overall Score: <span id="scoreDisplay"></span></p>
+        <p>Number of Deaths: <span id="deathCount"></span></p>
+    </div>
     <script>
-        // Set background based on path taken
-        const lastPath = localStorage.getItem('lastPath') || 'hotel';
-        document.body.style.setProperty('--bg-image', 
-            lastPath === 'subway' ? "url('subwaySurvivorPoint.webp')" : "url('hotelRooftop.webp')"
-        );
+        // Get death count
+        const deathCount = localStorage.getItem('deathCount') || '0';
+        document.getElementById('deathCount').textContent = deathCount;
+
+        // Display score
+        scoreSystem.displayScore();
+        
+        // Reset stats when Play Again is clicked
+        const playAgainButton = document.querySelector('#victoryBox button');
+        playAgainButton.addEventListener('click', function() {
+            scoreSystem.resetStats();
+        });
     </script>
     <script src="textAnimation.js"></script>
     <script src="saveSystem.js"></script>

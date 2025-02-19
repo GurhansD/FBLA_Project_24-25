@@ -8,12 +8,35 @@
 </head>
 <body class="hotel-background">
     <div class="end-message">
-        <h1>Congratulations!</h1>
-        <p>You barely escaped the storm and ended up surviving.</p>
-        <p>Thank you for playing Midnight Monsoon.</p>
-        <button onclick="window.location.href='index.html'">Go to Main Page</button>
+        <h1>You wake up from your slumber...</h1>
+        <p id="animated-text"></p>
+        
+        <!-- Choice buttons -->
+        <button onclick="window.location.href='subwayEntrance.html'">Brave the Subway</button>
+        <button onclick="window.location.href='hotelPath1.html'">Start Walking to The Hotel</button>
+        <button onclick="stopStory()">Stop Story</button>
     </div>
-    <script src="hotel.js"></script>
+    <script>
+        function stopStory() {
+            alert("Thank you for playing Midnight Monsoon!");
+            window.location.href = 'index.html';
+        }
+    </script>
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "After waking up, you are faced with the brutal reality and must make a decision quick";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
     <script src="saveSystem.js"></script>
+    <script src="inventory.js"></script>
 </body>
 </html>

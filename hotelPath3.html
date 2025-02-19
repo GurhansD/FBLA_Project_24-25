@@ -46,7 +46,7 @@
 <body>
     <div id="transparentBox">
         <h1>You venture further into the storm, seeking shelter...</h1>
-        <p>As you push through the rain, you spot a dimly lit shop ahead. The flickering sign above the door beckons you closer. Inside, the air is warm, and the smell of coffee fills your senses. You feel a sense of safety, but the storm rages on outside.</p>
+        <p id="animated-text"></p>
         <p>What will you do?</p>
         <div id="choices">
             <button onclick="alert('You turned left, unaware that the flood had already consumed this part of the city. Within moments, the rushing waters overwhelmed you, dragging you into the depths of the storm’s wrath. Your story ends here, lost beneath the rising tide.'); window.location.href='losePage.html'">Go Left</button>
@@ -62,6 +62,20 @@
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
         });
+    </script>
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "As you push through the rain, you spot a dimly lit shop ahead. The flickering sign above the door beckons you closer. Inside, the air is warm, and the smell of coffee fills your senses. You feel a sense of safety, but the storm rages on outside.";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        storyButtons.forEach(button => button.disabled = true);
     </script>
 </body>
 </html>

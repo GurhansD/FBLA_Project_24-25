@@ -101,6 +101,12 @@
         <p>Will you try again and face the Midnight Monsoon?</p>
         <button onclick="window.location.href='index.html'">Return to Main Menu</button>
     </div>
+    <script>
+        // Increment death counter
+        let deaths = parseInt(localStorage.getItem('deathCount') || '0');
+        deaths++;
+        localStorage.setItem('deathCount', deaths);
+    </script>
     <script src="saveSystem.js"></script>
 </body>
 </html>
