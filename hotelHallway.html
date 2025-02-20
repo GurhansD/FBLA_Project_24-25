@@ -49,7 +49,7 @@
 <body>
     <div id="transparentBox">
         <h1>You enter the hotel only to find this to be its condition</h1>
-        <p>The inside is partially flooded, with dark hallways and broken furniture floating in murky water. The upper floors are still dry, but the storm has knocked out power.</p>
+        <p id="animated-text"></p>
         <div id="choices">
             <button onclick="window.location.href='hotelRooftop.html'">Search for a Rooftop Exit</button>
 
@@ -60,5 +60,20 @@
 
     <script src="inventory.js"></script>
     <script src="saveSystem.js"></script>
+    <script src="help.js"></script>
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "The inside is partially flooded, with dark hallways and broken furniture floating in murky water. The upper floors are still dry, but the storm has knocked out power. What will you do?";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
 </body>
 </html>

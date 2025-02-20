@@ -46,8 +46,7 @@
 <body>
     <div id="transparentBox">
         <h1>You enter the abandoned shop.</h1>
-        <p>The abandoned shop is dimly lit, and the air is thick with dust. Rain is dripping through cracks in the ceiling.</p>
-        <p>What will you do?</p>
+        <p id="animated-text">The abandoned shop is dimly lit, and the air is thick with dust. Rain is dripping through cracks in the ceiling. What will you do?</p>
         <div id="choices">
             <button onclick="addJumpShoes(); window.location.href='hotelPath3RightBridge.html'">Search for Supplies</button>
             <button onclick="alert('The shop provided temporary refuge, but you underestimated the storm’s power. The flood overtook the building, leaving no way out.'); window.location.href='losePage.html'">Rest Here for a While</button>
@@ -56,6 +55,7 @@
             <button onclick="stopStory()">Stop Story</button>
         </div>
     </div>
+    
     <script>
         function addJumpShoes() {
             const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
@@ -101,8 +101,8 @@
         // Initialize inventory display
         updateInventoryDisplay();
     </script>
-
     <script src="inventory.js"></script>
     <script src="saveSystem.js"></script>
+    <script src="help.js"></script>
 </body>
 </html>

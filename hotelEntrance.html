@@ -46,7 +46,7 @@
 <body>
     <div id="transparentBox">
         <h1>Hotel Entrance</h1>
-        <p>You've reached the hotel entrance. The storm rages behind you. What will you do?</p>
+        <p id="animated-text"></p>
         <div id="choices">
             <button onclick="window.location.href='hotelHallway.html'">Enter the Hotel</button>
             <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
@@ -55,5 +55,20 @@
     </div>
     <script src="inventory.js"></script>
     <script src="saveSystem.js"></script>
+    <script src="help.js"></script>
+    <script type="module">
+        import { animateText } from './textAnimation.js';
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "You've reached the hotel entrance. The storm rages behind you. What will you do?";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
 </body>
 </html>
