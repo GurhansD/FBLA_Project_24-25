@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Midnight Monsoon</title>
+
+    <!-- Link to coffee shop specific styles -->
+    <link rel="stylesheet" type="text/css" href="/src/styles/coffeeShop.css">
+
+</head>
+
+<body class="coffee-shop-background">
+    <!-- Scene title -->
+    <h1 id="sceneTitle">Coffee Shop</h1>
+    
+    <!-- Doorbell audio element -->
+    <audio id="doorbell-audio" src="/assets/audios/ShopDoorBell.mp3" preload="auto"></audio>
+
+
+    <!-- Main content container -->
+    <div id="scene-content">
+        <!-- Text box for story progression -->
+        <div class="text-box" id="story-text">
+            <p id="animated-text"></p>
+        </div>
+    </div>
+    
+    <!-- Control buttons container -->
+    <div id="transparentBox">
+        <!-- Continue button to progress the story -->
+        <button id="continueButton">Continue Story</button>
+        
+        <!-- Stop button to end the story -->
+        <button id="stopButton">Stop Story</button>
+    </div>
+
+    <!-- Include required JavaScript files -->
+    <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
+
+    <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
+
+    <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+
+    <script type="module" src="/src/scripts/coffeeShop.js"></script> <!-- Main coffee shop scene logic -->
+
+
+</body>
+</html>

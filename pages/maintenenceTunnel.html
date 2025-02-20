@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Tunnel - Midnight Monsoon</title>
+
+    <link rel="stylesheet" href="/src/styles/subwayEntrance.css">
+    <style>
+        body {
+            background: url('/assets/images/maintenenceTunnel.webp') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Transparent box for content overlay */
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Button styling for choices */
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+            position: relative;
+            z-index: 2;
+            pointer-events: auto;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Inventory toggle button positioning */
+        #inventoryToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main content container -->
+    <div id="transparentBox">
+        <h2>The Maintenance Tunnel offers you your final choice...</h2>
+        <!-- Animated text container -->
+        <p id="animated-text"></p>
+        <!-- Choice buttons container -->
+        <div id="choices">
+            <!-- Safe path button -->
+            <button onclick="window.location.href='subwaySurvivorPoint.html'">Go Straight</button>
+            <!-- Dangerous path button (requires flashlight) -->
+            <button onclick="checkFlashlight()">Go Right</button>
+            <!-- Stop story button -->
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
+        </div>
+    </div>
+
+    <!-- Flashlight check functionality -->
+    <script>
+        /**
+         * Checks if player has flashlight before proceeding
+         * Redirects based on whether flashlight is in inventory
+         */
+        function checkFlashlight() {
+            const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+            if (inventory.includes('Flashlight (weak batteries)')) {
+                window.location.href = 'subwaySurvivorPoint.html';
+            } else {
+                alert('Without a flashlight, you stumble in the darkness and fall to your death.');
+                window.location.href = 'losePage.html';
+            }
+        }
+    </script>
+
+    <!-- Text animation module -->
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+        
+        // Get text speed from local storage or use default
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "The air is damp and heavy and the faint sound of dripping water echoes through the tunnel. Which way will you go?";
+        
+        // Get all buttons except inventory buttons
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        // Animate text and enable buttons when complete
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+
+    <!-- Include required JavaScript files -->
+    <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
+    <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
+    <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+</body>
+</html>

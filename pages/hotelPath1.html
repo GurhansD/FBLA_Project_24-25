@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Path - Midnight Monsoon</title>
+    <link rel="stylesheet" href="/src/styles/hotel.css">
+
+    <style>
+        body {
+            background: url('/assets/images/hotelPath1.webp') center center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #inventoryToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="transparentBox">
+        <h1>Welcome to the Hotel Path</h1>
+        <p id="animated-text"></p>
+        <div id="choices">
+            <button onclick="alert('You chose to go straight!'); window.location.href='hotelPath3.html'">Go Straight</button>
+            <button onclick="alert('You chose to take a right!'); window.location.href='hotelPathShadyMan.html'">Take a Right</button>
+            <button onclick="alert('You chose to stop the story!'); stopStory()">Stop Story</button>
+        </div>
+    </div>
+    <script src="/src/scripts/inventory.js"></script>
+
+    <script src="/src/scripts/saveSystem.js"></script>
+
+    <script src="/src/scripts/help.js"></script>
+
+    <script>
+        function stopStory() {
+            alert("Thanks for Playing!!!");
+            window.location.href = 'index.html';
+        }
+    </script>
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "What would you like to do?";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+</body>
+</html>

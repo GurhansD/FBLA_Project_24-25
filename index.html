@@ -1,40 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic HTML metadata and page setup -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MidNight Monsoon</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <h1 id="mainTitle">Midnight Monsoon</h1>
-    <!--Background Rain Audio-->
-    <audio id="rain-audio" src="./Audios/RainAudio.mp3" autoplay loop></audio>
+    <!-- Link to main stylesheet -->
+    <link rel="stylesheet" type="text/css" href="src/styles/style.css">
 
-    <!--These are the different buttons that are used to navigate through the main page-->
+</head>
+
+<body>
+    <!-- Main page title -->
+    <h1 id="mainTitle">Midnight Monsoon</h1>
+    
+    <!-- Background rain audio element -->
+    <!-- Autoplays and loops to create continuous atmosphere -->
+    <audio id="rain-audio" src="assets/audios/RainAudio.mp3" autoplay loop></audio>
+
+
+    <!-- Main navigation buttons container -->
+
 
     
     <div id="button-container">
+        <!-- Start button - begins the game -->
         <button id="startButton">Start</button>
-        <button onclick="window.location.href='instructions.html'">Introduction</button>
+        
+        <!-- Introduction button - shows game instructions -->
+        <button onclick="window.location.href='/pages/instructions.html'">Introduction</button>
+        
+        <!-- Settings button - opens settings page -->
         <button id="settingsButton">Settings</button>
     </div>
 
+
     
-    <!--This is the link to the script file for the home page-->
-    <script type="module" src="script.js"></script>
+    <!-- Main script file for the home page -->
+    <script type="module" src="src/scripts/script.js"></script>
+
+    
+    <!-- Settings button click handler -->
     <script>
         document.getElementById('settingsButton').onclick = () => {
-            window.location.href = 'settings.html';
+            window.location.href = '/pages/settings.html';
         };
     </script>
+    
+    <!-- Initialize game state -->
     <script>
         // Reset inventory when starting page is loaded
         localStorage.setItem('inventory', JSON.stringify([]));
     </script>
-    <script src="script.js"></script>
-    <script src="inventory.js"></script>
-    <script src="saveSystem.js"></script>
-    <script src="help.js"></script>
+    
+    <!-- Additional script includes -->
+    <script src="/src/scripts/script.js"></script>
+    <script src="/src/scripts/inventory.js"></script>
+    <script src="/src/scripts/saveSystem.js"></script>
+    <script src="/src/scripts/help.js"></script>
+
+
 </body>
 </html>

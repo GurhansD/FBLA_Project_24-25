@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Lost - Midnight Monsoon</title>
+
+    <!-- Link to main stylesheet -->
+    <link rel="stylesheet" href="/src/styles/style.css">
+
+    <style>
+        /* Floating animation for defeat text */
+        @keyframes float {
+
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Blinking animation for defeat elements */
+        @keyframes blink {
+
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Flickering animation for dramatic effect */
+        @keyframes flicker {
+
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        /* Rain animation for background */
+        @keyframes rain {
+
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('mainBack.png') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Press Start 2P', cursive;
+            animation: rain 5s linear infinite;
+        }
+
+        /* Styling for defeat message box */
+        #transparentBox {
+            background-color: rgba(40, 0, 0, 0.9);
+
+            padding: 30px;
+            border-radius: 10px;
+            color: #ff4444;
+            text-align: center;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 20px #ff0000;
+            animation: blink 1s infinite, flicker 0.1s infinite;
+        }
+
+        /* Main defeat heading styling */
+        h1 {
+            color: #ff4444;
+
+            font-size: 3rem;
+            text-shadow: 0 0 10px #ff0000;
+            animation: float 3s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        /* Paragraph text styling */
+        p {
+            font-size: 1.2rem;
+
+            line-height: 1.5;
+            margin: 20px 0;
+            color: #ff8888;
+        }
+
+        /* Return to menu button styling */
+        button {
+            margin: 20px;
+
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ff4444;
+            color: black;
+            transition: all 0.3s;
+            font-family: 'Press Start 2P', cursive;
+            animation: blink 1.5s infinite;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        /* Pixel art rendering settings */
+        .pixel-art {
+            image-rendering: pixelated;
+
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main content container -->
+    <div id="transparentBox">
+        <h1>DEFEAT!</h1>
+        <p>The storm was too much to handle...</p>
+        <p>Your journey has come to an end, but the night continues.</p>
+        <p>Will you try again and face the Midnight Monsoon?</p>
+        <!-- Return to main menu button -->
+        <button onclick="window.location.href='index.html'">Return to Main Menu</button>
+    </div>
+
+    <script>
+        /**
+         * Increment death counter in local storage
+         * Tracks total deaths across playthroughs
+         */
+        let deaths = parseInt(localStorage.getItem('deathCount') || '0');
+        deaths++;
+        localStorage.setItem('deathCount', deaths);
+    </script>
+    <!-- Include save system functionality -->
+    <script src="/src/scripts/saveSystem.js"></script>
+
+
+</body>
+</html>

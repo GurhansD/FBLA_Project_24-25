@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Hallway - Midnight Monsoon</title>
+
+    <!-- Link to shared styles -->
+    <link rel="stylesheet" href="/src/styles/subwayEntrance.css">
+
+    <style>
+        /* Full-screen background with hotel hallway image */
+        body {
+            background: url('/assets/images/hotelHallway.webp') center center/cover no-repeat;
+
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        /* Transparent box for content overlay */
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        /* Button styling */
+        button {
+            margin: 10px;
+
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        /* Button hover effect */
+        button:hover {
+            background-color: #0056b3;
+        }
+        /* Heading styling */
+        h2 {
+            margin-bottom: 20px;
+        }
+        /* Inventory toggle button positioning */
+        #inventoryToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main content container -->
+    <div id="transparentBox">
+        <h1>You enter the hotel only to find this to be its condition</h1>
+        <!-- Animated text container -->
+        <p id="animated-text"></p>
+        <!-- Choice buttons container -->
+        <div id="choices">
+            <!-- Rooftop exit button -->
+            <button onclick="window.location.href='hotelRooftop.html'">Search for a Rooftop Exit</button>
+            
+            <!-- Stop story button -->
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
+            <!-- Dangerous choice button -->
+            <button onclick="alert('You push the last piece of furniture against the door, sealing yourself inside. The storm rages on, and for a moment, you feel safe. But as the floodwaters rise, the power cuts out, and the walls tremble. Trapped with no way out, the hotel becomes your tomb.'); window.location.href='losePage.html'">Barricade Yourself in a Room and Wait Out the Storm</button>
+        </div>
+    </div>
+
+
+    <!-- Include required JavaScript files -->
+    <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
+
+    <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
+
+    <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+
+    
+    <!-- Text animation module -->
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+
+        
+        // Get text speed from local storage or use default
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "The inside is partially flooded, with dark hallways and broken furniture floating in murky water. The upper floors are still dry, but the storm has knocked out power. What will you do?";
+        
+        // Get all buttons except inventory buttons
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        // Animate text and enable buttons when complete
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+
+</body>
+</html>

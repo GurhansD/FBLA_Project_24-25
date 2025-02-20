@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shady Man - Midnight Monsoon</title>
+    <link rel="stylesheet" href="/src/styles/hotel.css">
+
+    <style>
+        body {
+            background: url('/assets/images/hotelPathShadyMan.webp') center center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #inventoryToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="transparentBox">
+        <h1>In a dark alley, a mysterious figure in a rain-soaked coat stands beneath a flickering streetlight.</h1>
+        <h3>He speaks in a raspy voice...</h3>
+        <p id="animated-text"></p>
+        <p>What will you do?</p>
+        <div id="choices">
+            <button onclick="window.location.href='hotelPath1.html'">Go Back</button>
+            <button onclick="trustShadyMan()">Trust the Shady Man</button>
+            <button onclick="stopStory()">Stop Story</button>
+        </div>
+    </div>
+    <script src="/src/scripts/saveSystem.js"></script>
+
+    <script src="/src/scripts/inventory.js"></script>
+
+    <script src="/src/scripts/help.js"></script>
+
+    <script>
+        function trustShadyMan() {
+            alert('The man knew the city like the back of his hand and he took you up until here before vanishing like he was never there. This will now serve as your final challenge.');
+            window.location.href = 'hotelJumpScene.html';
+        }
+
+        function stopStory() {
+            alert("Thanks for Playing!!!");
+            window.location.href = 'index.html';
+        }
+    </script>
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "The city's drowning. I know a way out, but you gotta trust me...";
+        
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel - Midnight Monsoon</title>
+
+    <!-- Link to hotel scene specific styles -->
+    <link rel="stylesheet" href="/src/styles/hotel.css">
+
+</head>
+
+<body class="hotel-background">
+    <!-- Main content container -->
+    <div class="end-message">
+        <!-- Scene title -->
+        <h1>You wake up from your slumber...</h1>
+        <!-- Animated text container -->
+        <p id="animated-text"></p>
+
+        
+        <!-- Choice buttons -->
+        <button onclick="window.location.href='subwayEntrance.html'">Brave the Subway</button>
+        <button onclick="window.location.href='hotelPath1.html'">Start Walking to The Hotel</button>
+        <button onclick="stopStory()">Stop Story</button>
+    </div>
+
+    <!-- Stop story functionality -->
+    <script>
+        /**
+         * Handles stopping the story
+         * Shows confirmation alert and returns to main menu
+         */
+        function stopStory() {
+            alert("Thank you for playing Midnight Monsoon!");
+            window.location.href = 'index.html';
+        }
+    </script>
+
+    <!-- Text animation module -->
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+
+        
+        // Get text speed from local storage or use default
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "After waking up, you are faced with the brutal reality and must make a decision quick";
+        
+        // Get all buttons except inventory buttons
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        // Animate text and enable buttons when complete
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+
+    <!-- Include required JavaScript files -->
+    <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
+
+    <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
+
+    <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+
+
+</body>
+</html>

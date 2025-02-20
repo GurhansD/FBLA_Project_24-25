@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subway Path 2 - Midnight Monsoon</title>
+    <link rel="stylesheet" href="/src/styles/subwayEntrance.css">
+
+    <style>
+        body {
+            background: url('/assets/images/subwayPath2.webp') center center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="transparentBox">
+        <h1 id="sceneTitle">Heading deeper into the subway, you face yet another decision...</h1>
+        <div class="text-box" id="story-text">
+            <p id="animated-text"></p>
+        </div>
+        <div id="choices">
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href = 'index.html';">Stop Story</button>
+            <button onclick="alert('You waded deeper into the abandoned subway, hoping to find a dry path forward. But as the water rose swiftly, your escape route vanished. The tunnel became a watery grave, and the last thing you saw was the dim flicker of the emergency lights fading into darkness.'); window.location.href='losePage.html'">Explore Flooded Tunnel</button>
+            <button onclick="window.location.href='subwayPathMaintenence.html'">Investigate Maintenance Door</button>
+        </div>
+    </div>
+    <script src="/src/scripts/inventory.js"></script>
+
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+
+        
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "You move forward, stepping with caution. The tunnel walls drip with moisture, and the sound of rats echoes. As you go deeper, you see: A flooded tunnel with a broken train. A strange door marked 'Maintenance'. What will you do?";
+        
+        // Get all buttons except inventory
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        animateText('animated-text', storyText, userSpeed, () => {
+            // Enable buttons after animation completes
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable story buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+    <script src="/src/scripts/saveSystem.js"></script>
+    <script src="/src/scripts/help.js"></script>
+
+</body>
+</html>

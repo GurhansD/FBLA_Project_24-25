@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Rooftop - Midnight Monsoon</title>
+
+    <!-- Link to shared styles -->
+    <link rel="stylesheet" href="/src/styles/subwayEntrance.css">
+
+    <style>
+        /* Full-screen background with hotel rooftop image */
+        body {
+            background: url('/assets/images/hotelRooftop.webp') center center/cover no-repeat;
+
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        /* Transparent box for content overlay */
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        /* Button styling */
+        button {
+            margin: 10px;
+
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        /* Button hover effect */
+        button:hover {
+            background-color: #0056b3;
+        }
+        /* Heading styling */
+        h2 {
+            margin-bottom: 20px;
+        }
+        /* Inventory toggle button positioning */
+        #inventoryToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main content container -->
+    <div id="transparentBox">
+        <h2>Final Choice: How Do You Escape?</h2>
+        <!-- Choice buttons container -->
+        <div id="choices">
+            <!-- Victory path button -->
+            <button onclick="window.location.href='victoryPage.html'">Wave Down the Helicopter</button>
+            <!-- Risky path button -->
+            <button onclick="window.location.href='hotelJumpScene.html'">Jump to the Rooftop Leading to the Neighboring Building</button>
+            <!-- Stop story button -->
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
+        </div>
+    </div>
+
+    <!-- Include required JavaScript files -->
+    <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
+
+    <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
+
+    <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+
+
+</body>
+</html>

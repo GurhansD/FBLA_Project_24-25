@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Room - Midnight Monsoon</title>
+
+    <!-- Link to shared subway styles -->
+    <link rel="stylesheet" href="/src/styles/subwayEntrance.css">
+
+    <style>
+        /* Full-screen background with maintenance room image */
+        body {
+            background: url('/assets/images/subwayPathMaintenence.webp') center center/cover no-repeat;
+
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        /* Transparent box for content overlay */
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+
+        /* Button styling for choices */
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+            position: relative;
+            z-index: 2;
+            pointer-events: auto;
+        }
+
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main content container -->
+    <div id="transparentBox">
+        <h1 id="sceneTitle">The Maintenance is dimly lit and filled with tools and equipment</h1>
+        <!-- Text box for story content -->
+        <div class="text-box" id="story-text">
+            <p id="animated-text"></p>
+        </div>
+        <!-- Choice buttons container -->
+        <div id="choices">
+            <!-- Stop story button -->
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href = 'index.html';">Stop Story</button>
+            <!-- Follow tunnels button -->
+            <button onclick="alert('You chose to follow the maintenance tunnels!'); window.location.href = 'maintenenceTunnel.html'">Follow the Maintenance Tunnels</button>
+            <!-- Search room button -->
+            <button onclick="searchRoom()">Search the Room</button>
+            <!-- Dangerous choice button -->
+            <button onclick="alert('The silence stretched on, broken only by distant echoes. No rescue came. The storm consumed the city, and you were forgotten in the dark.'); window.location.href = 'losePage.html'">Wait in the Maintenance Room</button>
+        </div>
+    </div>
+
+    <!-- Include required JavaScript files -->
+    <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
+
+    
+    <!-- Search room functionality -->
+    <script>
+        /**
+         * Handles searching the room for items
+         * Adds flashlight to inventory if not already present
+         */
+        function searchRoom() {
+            const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+            if (inventory.includes('Flashlight (weak batteries)')) {
+                alert('You search the room but find nothing new.');
+            } else {
+                addItemToInventory('Flashlight (weak batteries)');
+                alert('You found a flashlight with weak batteries!');
+            }
+        }
+    </script>
+
+    <!-- Text animation module -->
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+
+        
+        // Get text speed from local storage or use default
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "The maintenance room offers you many choices and with it, gives you a sense of hope. What will you do?";
+        
+        // Get all buttons except inventory buttons
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        // Animate text and enable buttons when complete
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+    
+    <!-- Additional script includes -->
+    <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
+    <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+
+
+</body>
+</html>

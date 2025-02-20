@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abandoned Shop - Midnight Monsoon</title>
+    <link rel="stylesheet" href="/src/styles/hotel.css">
+
+    <style>
+        body {
+            background: url('/assets/images/hotelpathAbandonedShop.webp') center center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #inventoryToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="transparentBox">
+        <h1>You enter the abandoned shop.</h1>
+        <p id="animated-text">The abandoned shop is dimly lit, and the air is thick with dust. Rain is dripping through cracks in the ceiling. What will you do?</p>
+        <div id="choices">
+            <button onclick="addJumpShoes(); window.location.href='hotelPath3RightBridge.html'">Search for Supplies</button>
+            <button onclick="alert('The shop provided temporary refuge, but you underestimated the storm’s power. The flood overtook the building, leaving no way out.'); window.location.href='losePage.html'">Rest Here for a While</button>
+            <button onclick="alert('Some doors are best left unopened. The darkness claimed you before you could escape.'); window.location.href='losePage.html'">Investigate the Back Room</button>
+            <button onclick="alert('You chose to leave immediately! You ended up following the path to the bridge ahead of you, leading to the hotel.'); window.location.href='hotelPath3RightBridge'">Leave Immediately</button>
+            <button onclick="stopStory()">Stop Story</button>
+        </div>
+    </div>
+    
+    <script>
+        function addJumpShoes() {
+            const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+            if (!inventory.includes('Jump Shoes')) {
+                inventory.push('Jump Shoes');
+                localStorage.setItem('inventory', JSON.stringify(inventory));
+                alert('You found a pair of Jump Shoes! They might come in handy. After finding these, you are on your way to the bridge before the hotel.');
+                updateInventoryDisplay();
+                // Force inventory box to update if visible
+                if (document.getElementById('inventoryBox').style.display === 'block') {
+                    toggleInventory();
+                    toggleInventory();
+                }
+            } else {
+                alert('You search the shop but find nothing new.');
+            }
+        }
+
+        function updateInventoryDisplay() {
+            const inventoryList = document.getElementById('inventoryList');
+            const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
+            inventoryList.innerHTML = inventory.map(item => {
+                if (item === 'Jump Shoes') {
+                    return `<li><img src="pixelShoe.png" alt="Jump Shoes" style="width:32px;height:32px;margin-right:10px;">Jump Shoes</li>`;
+                } else if (item === 'Flashlight (weak batteries)') {
+                    return `<li><img src="pixelFlashlight.jpg" alt="Flashlight" style="width:32px;height:32px;margin-right:10px;">Flashlight</li>`;
+                }
+                return `<li>${item}</li>`;
+            }).join('');
+        }
+
+        function toggleInventory() {
+            const inventoryBox = document.getElementById('inventoryBox');
+            updateInventoryDisplay();
+            inventoryBox.style.display = inventoryBox.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function stopStory() {
+            alert("Thanks for Playing!!!");
+            window.location.href = 'index.html';
+        }
+
+        // Initialize inventory display
+        updateInventoryDisplay();
+    </script>
+    <script src="/src/scripts/inventory.js"></script>
+
+    <script src="/src/scripts/saveSystem.js"></script>
+
+    <script src="/src/scripts/help.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subway Path - Midnight Monsoon</title>
+
+    <!-- Link to subway entrance specific styles -->
+    <link rel="stylesheet" href="/src/styles/subwayEntrance.css">
+
+    <style>
+        /* Full-screen background with subway path image */
+        body {
+            background: url('/assets/images/subwayPath1.webp') center center/cover no-repeat;
+
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        /* Transparent box for content overlay */
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        /* Text box styling */
+        #textBox {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        /* Button styling */
+        button {
+            margin: 10px;
+
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        /* Button hover effect */
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main content container -->
+    <div id="transparentBox">
+        <!-- Text box for story content -->
+        <div id="textBox">
+            <h1>The station is eerily empty, and you face a decision...</h1>
+            <!-- Animated text container -->
+            <p id="animated-text"></p>
+        </div>
+        <!-- Choice buttons container -->
+        <div id="choices">
+            <!-- Stop story button -->
+            <button onclick="stopStory()">Stop Story</button>
+            <!-- Dangerous choice button -->
+            <button onclick="alert('You waited, hoping for rescue. But in the depths of the abandoned subway, no one came. The storm raged on, and the darkness swallowed you whole.'); window.location.href='losePage.html'">Wait at Subway</button>
+            <!-- Explore subway button -->
+            <button onclick="alert('You chose to explore the subway!'); window.location.href='subwayPath2.html'">Explore Subway</button>
+        </div>
+    </div>
+
+    <!-- Include required JavaScript files -->
+    <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
+
+    
+    <!-- Stop story functionality -->
+    <script>
+        /**
+         * Handles stopping the story
+         * Shows confirmation alert and returns to main menu
+         */
+        function stopStory() {
+            alert("Thanks for Playing!!!");
+            window.location.href = 'index.html';
+        }
+    </script>
+    
+    <!-- Text animation module -->
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+
+        
+        // Get text speed from local storage or use default
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "A train sits idly on the track, its doors partially open. The rainwater trickles down the walls, creating puddles on the floor. Flickering fluorescent lights and graffiti-covered walls cover your surroundings.";
+        
+        // Get all buttons except inventory buttons
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        // Animate text and enable buttons when complete
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+    
+    <!-- Additional script includes -->
+    <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
+    <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML metadata and page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subway Entrance - Midnight Monsoon</title>
+
+    <!-- Link to subway entrance specific styles -->
+    <link rel="stylesheet" href="/src/styles/subwayEntrance.css">
+
+    <style>
+        /* Full-screen background with subway entrance image */
+        body {
+            background: url('/assets/images/subwayEntrance.webp') center center/cover no-repeat;
+
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        /* Transparent box for content overlay */
+        #transparentBox {
+            background-color: rgba(0, 0, 0, 0.7);
+
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        /* Button styling */
+        button {
+            margin: 10px;
+
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        /* Button hover effect */
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main content container -->
+    <div id="transparentBox">
+        <h1 id="sceneTitle">Subway Entrance</h1>
+        <!-- Text box for story progression -->
+        <div class="text-box" id="story-text">
+            <p id="animated-text"></p>
+        </div>
+        <!-- Choice buttons container -->
+        <div id="choices">
+            <!-- Enter subway button -->
+            <button onclick="window.location.href='subwayPath1.html'">Enter Subway</button>
+            <!-- Dangerous choice button -->
+            <button onclick="alert('You chose to return to the coffee shop!'); window.location.href='losePage.html'">Return to Coffee Shop</button>
+            <!-- Stop story button -->
+            <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
+        </div>
+    </div>
+
+    <!-- Include required JavaScript files -->
+    <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
+
+    
+    <!-- Text animation module -->
+    <script type="module">
+        import { animateText } from '/src/scripts/textAnimation.js';
+
+        
+        // Get text speed from local storage or use default
+        const userSpeed = localStorage.getItem('textSpeed') || 25;
+        const storyText = "You are at the Subway station entrance. It looks abandoned down there, and there is no one in sight. Now you face these choices:";
+        
+        // Get all buttons except inventory buttons
+        const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
+        
+        // Animate text and enable buttons when complete
+        animateText('animated-text', storyText, userSpeed, () => {
+            storyButtons.forEach(button => button.disabled = false);
+        });
+        
+        // Disable buttons during animation
+        storyButtons.forEach(button => button.disabled = true);
+    </script>
+    
+    <!-- Additional script includes -->
+    <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
+    <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+
+
+</body>
+</html>
