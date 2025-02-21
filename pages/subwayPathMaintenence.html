@@ -78,7 +78,7 @@
             <button onclick="alert('The silence stretched on, broken only by distant echoes. No rescue came. The storm consumed the city, and you were forgotten in the dark.'); window.location.href = 'losePage.html'">Wait in the Maintenance Room</button>
         </div>
     </div>
-
+    <audio id="subwaydrip-audio" src="/assets/audios/subwayDripAudio.mp3" loop></audio>></audio>
     <!-- Include required JavaScript files -->
     <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
 
@@ -99,7 +99,6 @@
             }
         }
     </script>
-
     <!-- Text animation module -->
     <script type="module">
         import { animateText } from '/src/scripts/textAnimation.js';
@@ -124,6 +123,7 @@
     <!-- Additional script includes -->
     <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
     <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
+    <script src="/src/scripts/dripAudio.js"></script> <!-- Background Audio system implementation -->
 
 
 </body>

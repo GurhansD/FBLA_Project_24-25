@@ -68,7 +68,7 @@
             <button onclick="stopStory()">Stop Story</button>
         </div>
     </div>
-
+    <audio id="subwaydrip-audio" src="/assets/audios/subwayDripAudio.mp3" loop></audio>></audio>
     
     <script>
         /* Function to add Jump Shoes to inventory */
@@ -77,7 +77,7 @@
             if (!inventory.includes('Jump Shoes')) {
                 inventory.push('Jump Shoes');
                 localStorage.setItem('inventory', JSON.stringify(inventory));
-                alert('You found a pair of Jump Shoes! They might come in handy. After finding these, you are on your way to the bridge before the hotel.');
+                alert('You found a pair of Jump Shoes! They might come in handy. After finding these, you ened up following the path to the bridge leading the hotel.');
                 updateInventoryDisplay();
                 // Force inventory box to update if visible
                 if (document.getElementById('inventoryBox').style.display === 'block') {
@@ -124,6 +124,7 @@
     <script src="/src/scripts/inventory.js"></script>
     <script src="/src/scripts/saveSystem.js"></script>
     <script src="/src/scripts/help.js"></script>
+    <script src="/src/scripts/dripAudio.js"></script>
 
 
 </body>

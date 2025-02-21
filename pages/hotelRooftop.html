@@ -75,7 +75,45 @@
             <button onclick="alert('Thanks for playing Midnight Monsoon!'); window.location.href='index.html';">Stop Story</button>
         </div>
     </div>
+    <audio id="wind-audio" src="/assets/audios/hotelPathWind.mp3" loop></audio>></audio>
+    <script>
+        // Play wind music when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const windAudio = document.getElementById('wind-audio');
+            // Get volume from localStorage or use default 0.5
+            const volume = parseFloat(localStorage.getItem('volume')) || 0.5;
+            windAudio.volume = volume;
 
+            // Attempt to play audio
+            const playAudio = () => {
+                windAudio.play().catch(error => {
+                    // If autoplay is blocked, show play button
+                    const playButton = document.createElement('button');
+                    playButton.textContent = 'Play Music';
+                    playButton.style.position = 'fixed';
+                    playButton.style.bottom = '20px';
+                    playButton.style.left = '20px';
+                    playButton.style.padding = '10px 20px';
+                    playButton.style.backgroundColor = '#800080';
+                    playButton.style.color = 'white';
+                    playButton.style.border = 'none';
+                    playButton.style.borderRadius = '5px';
+                    playButton.style.cursor = 'pointer';
+                    playButton.style.zIndex = '1000';
+
+                    // Add click handler to play audio
+                    playButton.addEventListener('click', () => {
+                        windAudio.play();
+                        playButton.remove();
+                    });
+
+                    document.body.appendChild(playButton);
+                });
+            };
+
+            playAudio();
+        });
+    </script>
     <!-- Include required JavaScript files -->
     <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
 

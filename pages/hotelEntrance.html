@@ -73,7 +73,7 @@
             <button onclick="alert('As you wander into the storm, the winds howl louder, and the rain blinds your vision. Before you realize it, floodwaters surge around you, pulling you under. The city swallows another lost soul.'); window.location.href='losePage.html'">Look for Another Way</button>
         </div>
     </div>
-
+    <audio id="rain-audio" src="/assets/audios/RainAudio.mp3" loop></audio>></audio>
     <!-- Include required JavaScript files -->
     <script src="/src/scripts/inventory.js"></script> <!-- Inventory management -->
 
@@ -81,7 +81,8 @@
 
     <script src="/src/scripts/help.js"></script> <!-- Help system implementation -->
 
-    
+    <script src="/src/scripts/rainAudio.js"></script> <!-- Background Audio system implementation -->
+
     <!-- Text animation module -->
     <script type="module">
         import { animateText } from '/src/scripts/textAnimation.js';
