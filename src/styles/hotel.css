@@ -1,3 +1,4 @@
+/* Styles for hotel background scenes */
 body.hotel-background {
     background: url('/assets/images/coffeeShopAbandoned.webp') center center/cover no-repeat;
     display: flex;
@@ -9,6 +10,7 @@ body.hotel-background {
     font-family: Arial, sans-serif;
 }
 
+/* Style for end game message box */
 .end-message {
     text-align: center;
     background: rgba(0, 0, 0, 0.6);
@@ -17,12 +19,16 @@ body.hotel-background {
     max-width: 600px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
+/* Position and style for inventory toggle button */
 #inventoryToggle {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
 }
+
+/* Base body styles for hotel entrance scene */
 body {
     background: url('/assets/images/hotelEntrance.webp') center center/cover no-repeat;
     display: flex;
@@ -31,6 +37,8 @@ body {
     height: 100vh;
     margin: 0;
 }
+
+/* Style for transparent dialog boxes */
 #transparentBox {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -38,6 +46,8 @@ body {
     color: white;
     text-align: center;
 }
+
+/* Base button styles with hover effect */
 button {
     margin: 10px;
     padding: 10px 20px;
@@ -49,12 +59,8 @@ button {
     color: white;
     transition: background-color 0.3s;
 }
+
+/* Button hover state */
 button:hover {
     background-color: #0056b3;
-}
-#inventoryToggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
 }

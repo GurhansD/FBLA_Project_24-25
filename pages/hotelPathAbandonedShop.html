@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic page metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abandoned Shop - Midnight Monsoon</title>
+
+    <!-- Link to hotel scene styles -->
     <link rel="stylesheet" href="/src/styles/hotel.css">
 
     <style>
+        /* Main scene styling with background image */
         body {
             background: url('/assets/images/hotelpathAbandonedShop.webp') center center/cover no-repeat;
-
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
         }
+
+        /* Transparent box for text and choices */
         #transparentBox {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
@@ -23,6 +28,8 @@
             color: white;
             text-align: center;
         }
+
+        /* Button styling with hover effect */
         button {
             margin: 10px;
             padding: 10px 20px;
@@ -37,6 +44,7 @@
         button:hover {
             background-color: #0056b3;
         }
+        /* Inventory toggle button positioning */
         #inventoryToggle {
             position: fixed;
             top: 20px;
@@ -44,11 +52,14 @@
             z-index: 1000;
         }
     </style>
+
 </head>
 <body>
+    <!-- Main content container -->
     <div id="transparentBox">
         <h1>You enter the abandoned shop.</h1>
         <p id="animated-text">The abandoned shop is dimly lit, and the air is thick with dust. Rain is dripping through cracks in the ceiling. What will you do?</p>
+        <!-- Player choices with associated actions -->
         <div id="choices">
             <button onclick="addJumpShoes(); window.location.href='hotelPath3RightBridge.html'">Search for Supplies</button>
             <button onclick="alert('The shop provided temporary refuge, but you underestimated the storm’s power. The flood overtook the building, leaving no way out.'); window.location.href='losePage.html'">Rest Here for a While</button>
@@ -57,8 +68,10 @@
             <button onclick="stopStory()">Stop Story</button>
         </div>
     </div>
+
     
     <script>
+        /* Function to add Jump Shoes to inventory */
         function addJumpShoes() {
             const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
             if (!inventory.includes('Jump Shoes')) {
@@ -76,6 +89,7 @@
             }
         }
 
+        /* Function to update the inventory display */
         function updateInventoryDisplay() {
             const inventoryList = document.getElementById('inventoryList');
             const inventory = JSON.parse(localStorage.getItem('inventory') || '[]');
@@ -89,12 +103,14 @@
             }).join('');
         }
 
+        /* Function to toggle inventory visibility */
         function toggleInventory() {
             const inventoryBox = document.getElementById('inventoryBox');
             updateInventoryDisplay();
             inventoryBox.style.display = inventoryBox.style.display === 'none' ? 'block' : 'none';
         }
 
+        /* Function to stop the story and return to main menu */
         function stopStory() {
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
@@ -103,11 +119,12 @@
         // Initialize inventory display
         updateInventoryDisplay();
     </script>
+
+    <!-- Script includes -->
     <script src="/src/scripts/inventory.js"></script>
-
     <script src="/src/scripts/saveSystem.js"></script>
-
     <script src="/src/scripts/help.js"></script>
+
 
 </body>
 </html>

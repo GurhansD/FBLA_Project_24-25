@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic page metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Path 3 - Midnight Monsoon</title>
+
+    <!-- Link to hotel scene styles -->
     <link rel="stylesheet" href="/src/styles/hotel.css">
 
     <style>
+        /* Main scene styling with background image */
         body {
             background: url('/assets/images/hotelPath3.webp') center center/cover no-repeat;
-
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
         }
+
+        /* Transparent box for text and choices */
         #transparentBox {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
@@ -23,6 +28,8 @@
             color: white;
             text-align: center;
         }
+
+        /* Button styling with hover effect */
         button {
             margin: 10px;
             padding: 10px 20px;
@@ -37,6 +44,7 @@
         button:hover {
             background-color: #0056b3;
         }
+        /* Inventory toggle button positioning */
         #inventoryToggle {
             position: fixed;
             top: 20px;
@@ -44,12 +52,15 @@
             z-index: 1000;
         }
     </style>
+
 </head>
 <body>
+    <!-- Main content container -->
     <div id="transparentBox">
         <h1>You venture further into the storm, seeking shelter...</h1>
         <p id="animated-text"></p>
         <p>What will you do?</p>
+        <!-- Player choices with associated actions -->
         <div id="choices">
             <button onclick="alert('You turned left, unaware that the flood had already consumed this part of the city. Within moments, the rushing waters overwhelmed you, dragging you into the depths of the storm’s wrath. Your story ends here, lost beneath the rising tide.'); window.location.href='losePage.html'">Go Left</button>
             <button onclick="alert('You chose to go up the stairs!'); window.location.href='hotelPath3RightBridge.html'">Go Up the Stairs to the Right</button>
@@ -57,32 +68,39 @@
             <button id="stopButton">Stop Story</button>
         </div>
     </div>
+
+    <!-- Script includes -->
     <script src="/src/scripts/inventory.js"></script>
-
     <script src="/src/scripts/saveSystem.js"></script>
-
     <script src="/src/scripts/help.js"></script>
 
     <script>
+        /* Function to handle stop story button click */
         document.getElementById("stopButton").addEventListener("click", function() {
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
         });
     </script>
+
     <script type="module">
+        // Import text animation functionality
         import { animateText } from '/src/scripts/textAnimation.js';
 
-        
+        // Get user's preferred text speed or default to 25
         const userSpeed = localStorage.getItem('textSpeed') || 25;
         const storyText = "As you push through the rain, you spot a dimly lit shop ahead. The flickering sign above the door beckons you closer. Inside, the air is warm, and the smell of coffee fills your senses. You feel a sense of safety, but the storm rages on outside.";
         
+        // Get all buttons except inventory buttons
         const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
         
+        // Animate text and enable buttons when complete
         animateText('animated-text', storyText, userSpeed, () => {
             storyButtons.forEach(button => button.disabled = false);
         });
         
+        // Disable buttons during text animation
         storyButtons.forEach(button => button.disabled = true);
     </script>
+
 </body>
 </html>

@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic page metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Path 3 Right Bridge - Midnight Monsoon</title>
+
+    <!-- Link to hotel scene styles -->
     <link rel="stylesheet" href="/src/styles/hotel.css">
 
     <style>
+        /* Main scene styling with background image */
         body {
             background: url('/assets/images/hotelPath3RightBridge.webp') center center/cover no-repeat;
-
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
         }
+
+        /* Transparent box for text and choices */
         #transparentBox {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
@@ -23,6 +28,8 @@
             color: white;
             text-align: center;
         }
+
+        /* Button styling with hover effect */
         button {
             margin: 10px;
             padding: 10px 20px;
@@ -37,6 +44,7 @@
         button:hover {
             background-color: #0056b3;
         }
+        /* Inventory toggle button positioning */
         #inventoryToggle {
             position: fixed;
             top: 20px;
@@ -44,12 +52,15 @@
             z-index: 1000;
         }
     </style>
+
 </head>
 <body>
+    <!-- Main content container -->
     <div id="transparentBox">
         <h1>You take the stairs up, avoiding the flooding below.</h1>
         <p id="animated-text"></p>
         <p>What will you do?</p>
+        <!-- Player choices with associated actions -->
         <div id="choices">
             <button onclick="stopStory()">Stop Story</button>
             <button onclick="alert('Turning back seemed like the safest option, but the flood had already claimed the lower streets. With nowhere left to run, the storm swallowed you whole.'); window.location.href='losePage.html?source=subwayPath1'">Turn Back</button>
@@ -57,32 +68,39 @@
             <button onclick="window.location.href='hotelEntrance.html'">Cross the Bridge</button>
         </div>
     </div>
+
+    <!-- Script includes -->
     <script src="/src/scripts/inventory.js"></script>
-
     <script src="/src/scripts/saveSystem.js"></script>
-
     <script src="/src/scripts/help.js"></script>
 
     <script>
+        /* Function to stop the story and return to main menu */
         function stopStory() {
             alert("Thanks for Playing!!!");
             window.location.href = 'index.html';
         }
     </script>
+
     <script type="module">
+        // Import text animation functionality
         import { animateText } from '/src/scripts/textAnimation.js';
 
-        
+        // Get user's preferred text speed or default to 25
         const userSpeed = localStorage.getItem('textSpeed') || 25;
         const storyText = "The old bridge sways as you cross, but through the rain, you see the hotel in the distance.";
         
+        // Get all buttons except inventory buttons
         const storyButtons = document.querySelectorAll('button:not(#inventoryBox button)');
         
+        // Animate text and enable buttons when complete
         animateText('animated-text', storyText, userSpeed, () => {
             storyButtons.forEach(button => button.disabled = false);
         });
         
+        // Disable buttons during text animation
         storyButtons.forEach(button => button.disabled = true);
     </script>
+
 </body>
 </html>
