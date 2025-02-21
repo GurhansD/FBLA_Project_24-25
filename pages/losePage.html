@@ -41,7 +41,7 @@
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('mainBack.png') center center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('/assets/images/mainBack.png') center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -126,6 +126,9 @@
         <button onclick="window.location.href='index.html'">Return to Main Menu</button>
     </div>
 
+    <!-- Defeat audio element -->
+    <audio id="defeat-audio" src="/assets/audios/defeatAudio.mp3"></audio>
+
     <script>
         /**
          * Increment death counter in local storage
@@ -134,6 +137,19 @@
         let deaths = parseInt(localStorage.getItem('deathCount') || '0');
         deaths++;
         localStorage.setItem('deathCount', deaths);
+    </script>
+    <script>
+        // Play defeat audio when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const defeatAudio = document.getElementById('defeat-audio');
+            // Get volume from localStorage
+            const savedVolume = localStorage.getItem('volume');
+            // Convert to number and ensure it's between 0 and 1
+            const volume = Math.min(Math.max(parseFloat(savedVolume || 0.7), 0), 1);
+            // Set volume and play
+            defeatAudio.volume = volume;
+            defeatAudio.play();
+        });
     </script>
     <!-- Include save system functionality -->
     <script src="/src/scripts/saveSystem.js"></script>

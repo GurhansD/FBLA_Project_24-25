@@ -180,7 +180,8 @@
         <p>Overall Score: <span id="scoreDisplay"></span></p>
         <p>Number of Deaths: <span id="deathCount"></span></p>
     </div>
-
+    <!-- Victory audio element -->
+    <audio id="victory-audio" src="/assets/audios/victoryAudio.mp3"></audio>
     <script>
         // Get death count from local storage
         const deathCount = localStorage.getItem('deathCount') || '0';
@@ -195,7 +196,19 @@
             scoreSystem.resetStats();
         });
     </script>
-
+    <script>
+        // Play victory audio when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const victoryAudio = document.getElementById('victory-audio');
+            // Get volume from localStorage
+            const savedVolume = localStorage.getItem('volume');
+            // Convert to number and ensure it's between 0 and 1
+            const volume = Math.min(Math.max(parseFloat(savedVolume || 0.5), 0), 1);
+            // Set volume and play
+            victoryAudio.volume = volume;
+            victoryAudio.play();
+        });
+    </script>
     <!-- Include required JavaScript files -->
     <script src="/src/scripts/textAnimation.js"></script> <!-- Text animation functionality -->
     <script src="/src/scripts/saveSystem.js"></script> <!-- Save system functionality -->
