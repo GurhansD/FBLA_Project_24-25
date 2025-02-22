@@ -52,7 +52,7 @@
         <p style="margin-bottom: 20px; line-height: 1.8;"><strong>Inventory:</strong> At any time, click the Inventory button in the top right corner of the screen to check the items you've acquired. Some items may be essential for survival, so keep track of what you're carrying.</p>
         <p style="margin-bottom: 20px; line-height: 1.8;"><strong>Stopping the Story:</strong> If you need to step away, click the Stop Story button to return to the main page. You can always restart your journey from the beginning or load your last checkpoint.</p>
         <p style="margin-bottom: 20px; line-height: 1.8;"><strong>Death & Checkpoints:</strong> The storm is merciless, and many choices lead to death. If you perish, simply click Load Recent Checkpoint to return to the last saved point in your journey and try a different path.</p>
-        <p style="margin-bottom: 20px; line-height: 1.8;"><strong>Your Report:</strong> After making it through the storm—whether you survive or not—you'll receive a final report detailing your journey, including your death count and overall score.</p>
+        <p style="margin-bottom: 20px; line-height: 1.8;"><strong>Your Report:</strong> After making it through the storm you'll receive a final report including your death count and overall score.</p>
         <p style="margin-bottom: 30px; line-height: 1.8;">Choose wisely, adapt to the storm, and see if you have what it takes to escape.</p>
         <div style="text-align: center;">
             <button id="closeHelp" style="padding: 10px 20px; background-color: #800080; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px;">Close</button>

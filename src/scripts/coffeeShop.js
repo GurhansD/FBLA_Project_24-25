@@ -85,8 +85,11 @@ function playThunderAndTransition() {
     
     // Transition to hotel scene after audio finishes
     thunderAudio.addEventListener('ended', () => {
-        window.location.href = '/pages/abandonedCoffeeShop.html';
+        setTimeout(() => {
+            window.location.href = '/pages/abandonedCoffeeShop.html';
+        }, 2000); // Wait for 2 seconds before transitioning
     });
+
 }
 
 
